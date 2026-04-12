@@ -16,10 +16,10 @@ This file is the **single registry** for catalog projects in this repository.
 
 | Category | Count |
 |---------|------:|
-| Total Projects | 204 |
-| Workflow / workflow-first | 67 |
-| Agent | 110 |
-| Multi-Agent | 27 |
+| Total Projects | 209 |
+| Workflow / workflow-first | 68 |
+| Agent | 113 |
+| Multi-Agent | 28 |
 | Level 5 (production-grade target) | 40 |
 
 **How rows are counted:** Each project has one **primary** row in exactly one domain table. “Workflow / workflow-first” includes systems where a **durable workflow** is the spine (including hybrid **Workflow + Agent** or **Workflow → Agent** designs). “Level 5” counts projects whose brief targets **Level 5** complexity.
@@ -48,6 +48,7 @@ Paths are repository-relative. Each path contains **`README.md`** and **`archite
 | Hotel Review Sentiment Intelligence | Workflow | L2 | Sentiment Analysis | `projects/travel/hotel-review-sentiment-intelligence` |
 | Travel Budget Assistant (Real-Time) | Agent | L2 | Tracking, Personalization | `projects/travel/travel-budget-assistant-real-time` |
 | Group Travel Coordination Agent | Multi-Agent | L4 | Decision-making, Coordination | `projects/travel/group-travel-coordination-agent` |
+| Dynamic Pricing Optimization Engine | Agent | L3 | Prediction, Optimization | `projects/travel/dynamic-pricing-optimization-engine` |
 
 ---
 
@@ -131,6 +132,7 @@ Paths are repository-relative. Each path contains **`README.md`** and **`archite
 | Project Status Aggregation System | Workflow | L2 | Aggregation | `projects/productivity/project-status-aggregation-system` |
 | Focus Time Protection Agent | Agent | L2 | Automation | `projects/productivity/focus-time-protection-agent` |
 | Team Workload Optimization Agent | Agent | L3 | Optimization | `projects/productivity/team-workload-optimization-agent` |
+| Slack/Teams Intelligent Summarization System | Workflow | L2 | Summarization, Automation | `projects/productivity/slack-teams-intelligent-summarization-system` |
 
 ---
 
@@ -192,6 +194,8 @@ Paths are repository-relative. Each path contains **`README.md`** and **`archite
 | Medication Adherence Monitoring System | Workflow | L2 | Monitoring | `projects/healthcare/medication-adherence-monitoring-system` |
 | Health Data Interoperability (FHIR Agent System) | Agent | L4 | Integration | `projects/healthcare/health-data-interoperability-fhir-agent-system` |
 | Clinical Note Generation Agent | Agent | L3 | Generation, Speech | `projects/healthcare/clinical-note-generation-agent` |
+| Clinical Decision Support System | Agent | L4 | Reasoning, Retrieval | `projects/healthcare/clinical-decision-support-system` |
+| Remote Patient Monitoring Intelligence Agent | Agent | L3 | Monitoring, Prediction | `projects/healthcare/remote-patient-monitoring-intelligence-agent` |
 
 ---
 
@@ -211,6 +215,7 @@ Paths are repository-relative. Each path contains **`README.md`** and **`archite
 | Contract Clause Extraction System | Workflow | L2 | Extraction | `projects/legal/contract-clause-extraction-system` |
 | Privacy Impact Assessment Agent | Agent | L3 | Compliance | `projects/legal/privacy-impact-assessment-agent` |
 | Litigation Risk Prediction Agent | Agent | L4 | Prediction | `projects/legal/litigation-risk-prediction-agent` |
+| Due Diligence Multi-Agent System | Multi-Agent | L4 | Research, Reasoning | `projects/legal/due-diligence-multi-agent-system` |
 
 ---
 
