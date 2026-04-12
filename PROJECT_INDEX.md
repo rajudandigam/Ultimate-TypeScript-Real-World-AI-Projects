@@ -16,11 +16,11 @@ This file is the **single registry** for catalog projects in this repository.
 
 | Category | Count |
 |---------|------:|
-| Total Projects | 79 |
-| Workflow / workflow-first | 25 |
-| Agent | 36 |
-| Multi-Agent | 18 |
-| Level 5 (production-grade target) | 34 |
+| Total Projects | 99 |
+| Workflow / workflow-first | 33 |
+| Agent | 46 |
+| Multi-Agent | 20 |
+| Level 5 (production-grade target) | 37 |
 
 **How rows are counted:** Each project has one **primary** row in exactly one domain table. “Workflow / workflow-first” includes systems where a **durable workflow** is the spine (including hybrid **Workflow + Agent** or **Workflow → Agent** designs). “Level 5” counts projects whose brief targets **Level 5** complexity.
 
@@ -66,11 +66,23 @@ Paths are repository-relative. Each path contains **`README.md`** and **`archite
 
 ---
 
+### 🤖 Agentic UI
+
+| Name | System Type | Complexity | Capabilities | Path |
+|------|-------------|------------|--------------|------|
+| AI In-App Product Copilot | Agent | L4 | Assistance, Context Awareness | `projects/agentic-ui/ai-in-app-product-copilot` |
+| AI Form Filling Assistant | Agent | L3 | Automation | `projects/agentic-ui/ai-form-filling-assistant` |
+
+---
+
 ### ⚙️ Workflows
 
 | Name | System Type | Complexity | Capabilities | Path |
 |------|-------------|------------|--------------|------|
 | Email to Task Workflow | Workflow | L2–L3 | Automation, Extraction, Decision making | `projects/workflows/email-to-task-workflow` |
+| AI Document Processing Pipeline | Workflow | L3 | Extraction, Automation | `projects/workflows/ai-document-processing-pipeline` |
+| AI Email Automation Engine | Workflow → Agent | L3 | Automation | `projects/workflows/ai-email-automation-engine` |
+| AI Customer Support Ticket Router | Workflow | L3 | Classification | `projects/workflows/ai-customer-support-ticket-router` |
 
 ---
 
@@ -80,6 +92,7 @@ Paths are repository-relative. Each path contains **`README.md`** and **`archite
 |------|-------------|------------|--------------|------|
 | AI Meeting Copilot | Agent | L3 | Summarization, Decision making, Memory | `projects/productivity/ai-meeting-copilot` |
 | Meeting Notes → Action Workflow | Workflow | L2–L3 | Extraction, Automation | `projects/productivity/meeting-notes-action-workflow` |
+| AI Spreadsheet Copilot | Agent | L4 | Analysis | `projects/productivity/ai-spreadsheet-copilot` |
 
 ---
 
@@ -152,6 +165,8 @@ Paths are repository-relative. Each path contains **`README.md`** and **`archite
 | AI Phishing Detection System | Agent | L4 | Classification, Detection | `projects/security/ai-phishing-detection-system` |
 | AI Threat Intelligence Aggregator | Agent | L5 | Retrieval, Analysis | `projects/security/ai-threat-intelligence-aggregator` |
 | Multi-Agent Cyber Defense System | Multi-Agent | L5 | Detection, Response | `projects/security/multi-agent-cyber-defense-system` |
+| AI Content Moderation Engine | Workflow → Agent | L4 | Classification | `projects/security/ai-content-moderation-engine` |
+| AI Identity Verification System | Workflow | L4 | Verification | `projects/security/ai-identity-verification-system` |
 
 ---
 
@@ -199,6 +214,14 @@ Paths are repository-relative. Each path contains **`README.md`** and **`archite
 
 ---
 
+### 📰 Media
+
+| Name | System Type | Complexity | Capabilities | Path |
+|------|-------------|------------|--------------|------|
+| AI News Personalization Engine | Agent | L3 | Personalization | `projects/media/ai-news-personalization-engine` |
+
+---
+
 ### 📈 Analytics
 
 | Name | System Type | Complexity | Capabilities | Path |
@@ -212,6 +235,9 @@ Paths are repository-relative. Each path contains **`README.md`** and **`archite
 | Name | System Type | Complexity | Capabilities | Path |
 |------|-------------|------------|--------------|------|
 | RAG-based Internal Docs Assistant | Agent | L4 | Retrieval, Reasoning | `projects/enterprise/rag-internal-docs-assistant` |
+| AI CRM Copilot (Sales Assistant) | Agent | L4 | Decision-making, Retrieval | `projects/enterprise/ai-crm-copilot-sales-assistant` |
+| AI Business Strategy Simulator | Multi-Agent | L5 | Simulation, Decision-making | `projects/enterprise/ai-business-strategy-simulator` |
+| AI Scenario Planning Engine | Agent | L4 | Prediction | `projects/enterprise/ai-scenario-planning-engine` |
 
 ---
 
@@ -220,6 +246,16 @@ Paths are repository-relative. Each path contains **`README.md`** and **`archite
 | Name | System Type | Complexity | Capabilities | Path |
 |------|-------------|------------|--------------|------|
 | Multi-Agent Pricing Optimizer | Multi-Agent | L5 | Decision making, Optimization | `projects/ecommerce/multi-agent-pricing-optimizer` |
+| AI Pricing Experimentation Platform | Agent | L4 | Experimentation | `projects/ecommerce/ai-pricing-experimentation-platform` |
+| AI Shopping Assistant (Conversational Commerce) | Agent | L4 | Recommendation | `projects/ecommerce/ai-shopping-assistant-conversational-commerce` |
+
+---
+
+### 🚚 Logistics
+
+| Name | System Type | Complexity | Capabilities | Path |
+|------|-------------|------------|--------------|------|
+| AI Supply Chain Optimization System | Multi-Agent | L5 | Optimization | `projects/logistics/ai-supply-chain-optimization-system` |
 
 ---
 
@@ -228,6 +264,7 @@ Paths are repository-relative. Each path contains **`README.md`** and **`archite
 | Name | System Type | Complexity | Capabilities | Path |
 |------|-------------|------------|--------------|------|
 | AI Hiring Assistant | Agent | L3 | Reasoning, Matching | `projects/hr/ai-hiring-assistant` |
+| AI Resume Parsing + Ranking System | Workflow → Agent | L3 | Extraction, Ranking | `projects/hr/ai-resume-parsing-ranking-system` |
 
 ---
 
@@ -255,6 +292,10 @@ Paths are repository-relative. Each path contains **`README.md`** and **`archite
 | Real-Time AI Streaming Response Engine | Workflow | L5 | Streaming, Performance | `projects/ai-infra/real-time-ai-streaming-response-engine` |
 | AI Event-Driven Workflow Engine | Workflow | L5 | Automation, Event Processing | `projects/ai-infra/ai-event-driven-workflow-engine` |
 | AI System Self-Improvement Engine | Multi-Agent | L5 | Learning, Optimization | `projects/ai-infra/ai-system-self-improvement-engine` |
+| Domain-Specific RAG Builder (Plug & Play) | Workflow | L4 | Retrieval | `projects/ai-infra/domain-specific-rag-builder` |
+| RAG Query Rewriting Engine | Agent | L4 | Optimization | `projects/ai-infra/rag-query-rewriting-engine` |
+| Hybrid Search Engine (Vector + Keyword) | Workflow | L4 | Retrieval | `projects/ai-infra/hybrid-search-engine` |
+| AI Knowledge Graph + RAG System | Agent | L5 | Reasoning, Retrieval | `projects/ai-infra/ai-knowledge-graph-rag-system` |
 
 *Note:* A separately named “**MCP Tool Registry & Discovery System**” is intentionally **not** a second catalog row—it overlaps the existing **MCP Tool Registry System** (registry + discovery + permissions). Extend that brief if you need more detail.
 
