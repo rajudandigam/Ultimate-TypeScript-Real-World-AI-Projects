@@ -16,11 +16,11 @@ This file is the **single registry** for catalog projects in this repository.
 
 | Category | Count |
 |---------|------:|
-| Total Projects | 185 |
-| Workflow / workflow-first | 63 |
-| Agent | 101 |
-| Multi-Agent | 21 |
-| Level 5 (production-grade target) | 39 |
+| Total Projects | 204 |
+| Workflow / workflow-first | 67 |
+| Agent | 110 |
+| Multi-Agent | 27 |
+| Level 5 (production-grade target) | 40 |
 
 **How rows are counted:** Each project has one **primary** row in exactly one domain table. “Workflow / workflow-first” includes systems where a **durable workflow** is the spine (including hybrid **Workflow + Agent** or **Workflow → Agent** designs). “Level 5” counts projects whose brief targets **Level 5** complexity.
 
@@ -87,6 +87,24 @@ Paths are repository-relative. Each path contains **`README.md`** and **`archite
 |------|-------------|------------|--------------|------|
 | AI In-App Product Copilot | Agent | L4 | Assistance, Context Awareness | `projects/agentic-ui/ai-in-app-product-copilot` |
 | AI Form Filling Assistant | Agent | L3 | Automation | `projects/agentic-ui/ai-form-filling-assistant` |
+
+---
+
+### 🧩 Platform
+
+| Name | System Type | Complexity | Capabilities | Path |
+|------|-------------|------------|--------------|------|
+| Agentic Workflow Builder (n8n-style AI Platform) | Multi-Agent | L4 | Orchestration, Automation | `projects/platform/agentic-workflow-builder-platform` |
+| Cross-Platform Computer Use Automation System | Agent | L4 | Automation, Tool usage | `projects/platform/cross-platform-computer-use-automation-system` |
+| Collaborative Multi-Agent Workspace Platform | Multi-Agent | L4 | Collaboration, Orchestration | `projects/platform/collaborative-multi-agent-workspace-platform` |
+
+---
+
+### 🎨 Frontend
+
+| Name | System Type | Complexity | Capabilities | Path |
+|------|-------------|------------|--------------|------|
+| Generative UI Component System | Agent | L3 | Generation, Personalization | `projects/frontend/generative-ui-component-system` |
 
 ---
 
@@ -238,6 +256,14 @@ Paths are repository-relative. Each path contains **`README.md`** and **`archite
 | Multi-Agent Cyber Defense System | Multi-Agent | L5 | Detection, Response | `projects/security/multi-agent-cyber-defense-system` |
 | AI Content Moderation Engine | Workflow → Agent | L4 | Classification | `projects/security/ai-content-moderation-engine` |
 | AI Identity Verification System | Workflow | L4 | Verification | `projects/security/ai-identity-verification-system` |
+| Security Vulnerability Scanner System | Workflow | L3 | Detection, Automation | `projects/security/security-vulnerability-scanner-system` |
+| Threat Intelligence Aggregation Platform | Multi-Agent | L4 | Monitoring, Retrieval | `projects/security/threat-intelligence-aggregation-platform` |
+| System-Wide Anomaly Detection Engine | Workflow | L3 | Detection, Monitoring | `projects/security/system-wide-anomaly-detection-engine` |
+| Incident Triage & Automated Response System | Multi-Agent | L4 | Orchestration, Automation | `projects/security/incident-triage-automated-response-system` |
+| Compliance Audit Automation Platform | Workflow | L3 | Compliance, Automation | `projects/security/compliance-audit-automation-platform` |
+| Autonomous Penetration Testing Agents (PentAGI) | Multi-Agent | L5 | Simulation, Automation | `projects/security/autonomous-penetration-testing-agents-pentagi` |
+| Continuous Security Posture Assessment Agent | Agent | L3 | Monitoring, Reasoning | `projects/security/continuous-security-posture-assessment-agent` |
+| Data Loss Prevention (DLP) Intelligence Agent | Agent | L3 | Detection, Reasoning | `projects/security/dlp-intelligence-agent` |
 
 ---
 
@@ -256,6 +282,7 @@ Paths are repository-relative. Each path contains **`README.md`** and **`archite
 |------|-------------|------------|--------------|------|
 | AI Smart Home Automation Agent | Agent | L4 | Automation | `projects/iot/ai-smart-home-automation-agent` |
 | Multi-Agent Smart City Traffic System | Multi-Agent | L5 | Optimization | `projects/iot/multi-agent-smart-city-traffic-system` |
+| IoT Fleet Intelligence Management Agent | Agent | L3 | Monitoring, Reasoning | `projects/iot/iot-fleet-intelligence-management-agent` |
 
 ---
 
@@ -274,6 +301,14 @@ Paths are repository-relative. Each path contains **`README.md`** and **`archite
 |------|-------------|------------|--------------|------|
 | Real-Time Voice AI Assistant | Agent | L5 | Speech, Reasoning | `projects/voice/real-time-voice-ai-assistant` |
 | AI Call Center Automation System | Workflow → Agent | L5 | Automation | `projects/voice/ai-call-center-automation-system` |
+
+---
+
+### 🎙️ AI Interface
+
+| Name | System Type | Complexity | Capabilities | Path |
+|------|-------------|------------|--------------|------|
+| Voice-First AI Interaction System | Agent | L3 | Interaction, Automation | `projects/ai-interface/voice-first-ai-interaction-system` |
 
 ---
 
@@ -321,6 +356,14 @@ Paths are repository-relative. Each path contains **`README.md`** and **`archite
 | AI CRM Copilot (Sales Assistant) | Agent | L4 | Decision-making, Retrieval | `projects/enterprise/ai-crm-copilot-sales-assistant` |
 | AI Business Strategy Simulator | Multi-Agent | L5 | Simulation, Decision-making | `projects/enterprise/ai-business-strategy-simulator` |
 | AI Scenario Planning Engine | Agent | L4 | Prediction | `projects/enterprise/ai-scenario-planning-engine` |
+
+---
+
+### 🏢 Enterprise AI
+
+| Name | System Type | Complexity | Capabilities | Path |
+|------|-------------|------------|--------------|------|
+| Enterprise RAG Knowledge Platform (Permission-Aware) | Agent | L4 | Retrieval, Reasoning | `projects/enterprise-ai/enterprise-rag-knowledge-platform` |
 
 ---
 
@@ -382,6 +425,15 @@ Paths are repository-relative. Each path contains **`README.md`** and **`archite
 
 ---
 
+### 🧠 AI Core
+
+| Name | System Type | Complexity | Capabilities | Path |
+|------|-------------|------------|--------------|------|
+| Multi-Modal Intelligence Agent | Agent | L4 | Multimodal, Reasoning | `projects/ai-core/multi-modal-intelligence-agent` |
+| Autonomous Research Multi-Agent System | Multi-Agent | L4 | Research, Retrieval | `projects/ai-core/autonomous-research-multi-agent-system` |
+
+---
+
 ### 🔌 AI Infra
 
 | Name | System Type | Complexity | Capabilities | Path |
@@ -410,8 +462,19 @@ Paths are repository-relative. Each path contains **`README.md`** and **`archite
 | RAG Query Rewriting Engine | Agent | L4 | Optimization | `projects/ai-infra/rag-query-rewriting-engine` |
 | Hybrid Search Engine (Vector + Keyword) | Workflow | L4 | Retrieval | `projects/ai-infra/hybrid-search-engine` |
 | AI Knowledge Graph + RAG System | Agent | L5 | Reasoning, Retrieval | `projects/ai-infra/ai-knowledge-graph-rag-system` |
+| AI Workflow Testing & Evaluation Framework | Workflow | L3 | Testing, Observability | `projects/ai-infra/ai-workflow-testing-evaluation-framework` |
 
 *Note:* A separately named “**MCP Tool Registry & Discovery System**” is intentionally **not** a second catalog row—it overlaps the existing **MCP Tool Registry System** (registry + discovery + permissions). Extend that brief if you need more detail.
+
+*Note:* The candidate **“MCP Server Hub & Registry Platform”** is treated as the same catalog surface area as **MCP Tool Registry System**—use that project and extend it rather than adding a duplicate row.
+
+---
+
+### 🌱 Sustainability
+
+| Name | System Type | Complexity | Capabilities | Path |
+|------|-------------|------------|--------------|------|
+| Climate & Sustainability Intelligence Agent | Agent | L3 | Analytics, Planning | `projects/sustainability/climate-sustainability-intelligence-agent` |
 
 ---
 
