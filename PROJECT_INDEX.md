@@ -16,11 +16,11 @@ This file is the **single registry** for catalog projects in this repository.
 
 | Category | Count |
 |---------|------:|
-| Total Projects | 63 |
-| Workflow / workflow-first | 21 |
-| Agent | 28 |
-| Multi-Agent | 14 |
-| Level 5 (production-grade target) | 32 |
+| Total Projects | 79 |
+| Workflow / workflow-first | 25 |
+| Agent | 36 |
+| Multi-Agent | 18 |
+| Level 5 (production-grade target) | 34 |
 
 **How rows are counted:** Each project has one **primary** row in exactly one domain table. “Workflow / workflow-first” includes systems where a **durable workflow** is the spine (including hybrid **Workflow + Agent** or **Workflow → Agent** designs). “Level 5” counts projects whose brief targets **Level 5** complexity.
 
@@ -40,6 +40,14 @@ Paths are repository-relative. Each path contains **`README.md`** and **`archite
 | AI Trip Personalization Engine | Agent | L4 | Personalization, Retrieval | `projects/travel/ai-trip-personalization-engine` |
 | Multi-Agent Travel Booking Optimizer | Multi-Agent | L5 | Decision making, Optimization | `projects/travel/multi-agent-travel-booking-optimizer` |
 | AI Travel Cost Prediction System | Agent | L4 | Prediction, Analytics | `projects/travel/ai-travel-cost-prediction-system` |
+| Travel Disruption Response System | Multi-Agent | L4 | Automation, Decision-making | `projects/travel/travel-disruption-response-system` |
+| Corporate Travel Policy Enforcer | Agent | L4 | Validation, Decision-making | `projects/travel/corporate-travel-policy-enforcer` |
+| Multi-Language Travel Concierge | Agent | L3 | Multilingual, Memory | `projects/travel/multi-language-travel-concierge` |
+| Loyalty Program Optimizer | Agent | L2 | Optimization | `projects/travel/loyalty-program-optimizer` |
+| Sustainable Travel Route Planner | Agent | L3 | Optimization, Analytics | `projects/travel/sustainable-travel-route-planner` |
+| Hotel Review Sentiment Intelligence | Workflow | L2 | Sentiment Analysis | `projects/travel/hotel-review-sentiment-intelligence` |
+| Travel Budget Assistant (Real-Time) | Agent | L2 | Tracking, Personalization | `projects/travel/travel-budget-assistant-real-time` |
+| Group Travel Coordination Agent | Multi-Agent | L4 | Decision-making, Coordination | `projects/travel/group-travel-coordination-agent` |
 
 ---
 
@@ -89,6 +97,14 @@ Paths are repository-relative. Each path contains **`README.md`** and **`archite
 | Name | System Type | Complexity | Capabilities | Path |
 |------|-------------|------------|--------------|------|
 | AI Expense Categorization + Insights | Workflow → Agent | L3 | Classification, Retrieval, Personalization | `projects/fintech/ai-expense-categorization-insights` |
+| Real-Time Fraud Detection Workflow | Workflow | L2 | Detection | `projects/fintech/real-time-fraud-detection-workflow` |
+| KYC Document Processing System | Workflow | L3 | OCR, Validation | `projects/fintech/kyc-document-processing-system` |
+| Personalized Investment Advisor Agent | Agent | L4 | Planning, Prediction | `projects/fintech/personalized-investment-advisor-agent` |
+| Expense Report Automation System | Workflow | L2 | Automation | `projects/fintech/expense-report-automation-system` |
+| Credit Risk Assessment Agent | Agent | L4 | Risk Analysis | `projects/fintech/credit-risk-assessment-agent` |
+| Algorithmic Trading Strategy Validator | Multi-Agent | L5 | Simulation, Optimization | `projects/fintech/algorithmic-trading-strategy-validator` |
+| AML Investigation Multi-Agent System | Multi-Agent | L5 | Detection, Analysis | `projects/fintech/aml-investigation-multi-agent-system` |
+| Intelligent Payment Routing Agent | Agent | L3 | Optimization | `projects/fintech/intelligent-payment-routing-agent` |
 
 ---
 
