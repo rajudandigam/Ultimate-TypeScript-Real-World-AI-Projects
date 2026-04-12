@@ -16,11 +16,11 @@ This file is the **single registry** for catalog projects in this repository.
 
 | Category | Count |
 |---------|------:|
-| Total Projects | 238 |
-| Workflow / workflow-first | 71 |
-| Agent | 135 |
+| Total Projects | 253 |
+| Workflow / workflow-first | 77 |
+| Agent | 144 |
 | Multi-Agent | 32 |
-| Level 5 (production-grade target) | 42 |
+| Level 5 (production-grade target) | 43 |
 
 **How rows are counted:** Each project has one **primary** row in exactly one domain table. “Workflow / workflow-first” includes systems where a **durable workflow** is the spine (including hybrid **Workflow + Agent** or **Workflow → Agent** designs). “Level 5” counts projects whose brief targets **Level 5** complexity.
 
@@ -91,6 +91,15 @@ Paths are repository-relative. Each path contains **`README.md`** and **`archite
 | Natural Language ↔ SQL Engine | Workflow | L2 | Translation | `projects/devtools/natural-language-sql-engine` |
 | IDE Code Completion Agent (Copilot Alternative) | Agent | L3 | Generation | `projects/devtools/ide-code-completion-agent` |
 | Real-Time Conversation Memory System | Workflow | L2 | Memory | `projects/devtools/real-time-conversation-memory-system` |
+
+---
+
+### 🧑‍💻 DevTools AI
+
+| Name | System Type | Complexity | Capabilities | Path |
+|------|-------------|------------|--------------|------|
+| Legacy Code Refactor Agent (COBOL to TypeScript) | Agent | L5 | Reasoning, Transformation | `projects/devtools-ai/legacy-code-refactor-agent-cobol-to-typescript` |
+| Schema Migration Safety Agent | Agent | L3 | Risk analysis, Reasoning | `projects/devtools-ai/schema-migration-safety-agent` |
 
 ---
 
@@ -232,6 +241,14 @@ Paths are repository-relative. Each path contains **`README.md`** and **`archite
 
 ---
 
+### ⚖️ Legal AI
+
+| Name | System Type | Complexity | Capabilities | Path |
+|------|-------------|------------|--------------|------|
+| Contract Redlining Automation Agent | Agent | L3 | Reasoning, Decision making | `projects/legal-ai/contract-redlining-automation-agent` |
+
+---
+
 ### 💼 Sales
 
 | Name | System Type | Complexity | Capabilities | Path |
@@ -265,6 +282,8 @@ Paths are repository-relative. Each path contains **`README.md`** and **`archite
 | Weekly Grocery Optimization Agent | Agent | L3 | Optimization, Personalization | `projects/personal-ai/weekly-grocery-optimization-agent` |
 | Home Maintenance Intelligence System | Agent | L3 | Prediction, Planning | `projects/personal-ai/home-maintenance-intelligence-system` |
 | Bill Splitting & Fairness Optimization Agent | Agent | L3 | Optimization, Decision making | `projects/personal-ai/bill-splitting-fairness-optimization-agent` |
+| Personalized Career Pivot Coach | Agent | L3 | Personalization, Planning | `projects/personal-ai/personalized-career-pivot-coach` |
+| Life Timeline Intelligence Agent | Agent | L3 | Memory, Personalization | `projects/personal-ai/life-timeline-intelligence-agent` |
 
 ---
 
@@ -394,6 +413,7 @@ Paths are repository-relative. Each path contains **`README.md`** and **`archite
 | Name | System Type | Complexity | Capabilities | Path |
 |------|-------------|------------|--------------|------|
 | Enterprise RAG Knowledge Platform (Permission-Aware) | Agent | L4 | Retrieval, Reasoning | `projects/enterprise-ai/enterprise-rag-knowledge-platform` |
+| Organizational Memory Graph Builder | Agent | L4 | Knowledge graph, Retrieval | `projects/enterprise-ai/organizational-memory-graph-builder` |
 
 ---
 
@@ -506,6 +526,7 @@ Paths are repository-relative. Each path contains **`README.md`** and **`archite
 |------|-------------|------------|--------------|------|
 | Predictive Maintenance Orchestrator | Multi-Agent | L5 | Monitoring, Prediction, Planning | `projects/industrial-ai/predictive-maintenance-orchestrator` |
 | Digital Twin Reasoning Agent | Agent | L4 | Simulation, Reasoning, Retrieval | `projects/industrial-ai/digital-twin-reasoning-agent` |
+| Safety Protocol Compliance Monitor | Workflow | L3 | Multimodal, Monitoring | `projects/industrial-ai/safety-protocol-compliance-monitor` |
 
 ---
 
@@ -515,6 +536,7 @@ Paths are repository-relative. Each path contains **`README.md`** and **`archite
 |------|-------------|------------|--------------|------|
 | Precision Irrigation Agent | Agent | L3 | Optimization, Decision making | `projects/agri-ai/precision-irrigation-agent` |
 | Crop Disease Diagnostic Agent | Agent | L3 | Multimodal, Retrieval | `projects/agri-ai/crop-disease-diagnostic-agent` |
+| Livestock Health & Behavior Tracker | Workflow | L4 | Monitoring, Prediction | `projects/agri-ai/livestock-health-behavior-tracker` |
 
 ---
 
@@ -524,6 +546,7 @@ Paths are repository-relative. Each path contains **`README.md`** and **`archite
 |------|-------------|------------|--------------|------|
 | Grid Load Balancing Multi-Agent System | Multi-Agent | L5 | Optimization, Real-time Processing | `projects/energy-ai/grid-load-balancing-multi-agent-system` |
 | EV Charging Optimization Agent | Agent | L2 | Optimization, Automation | `projects/energy-ai/ev-charging-optimization-agent` |
+| Smart Grid Leakage Detection System | Workflow | L3 | Monitoring, Detection | `projects/energy-ai/smart-grid-leakage-detection-system` |
 
 ---
 
@@ -533,6 +556,7 @@ Paths are repository-relative. Each path contains **`README.md`** and **`archite
 |------|-------------|------------|--------------|------|
 | Chemical Synthesis Planning Agent | Agent | L4 | Reasoning, Planning | `projects/research-ai/chemical-synthesis-planning-agent` |
 | Patent Landscape Analyzer | Agent | L3 | Retrieval, Research | `projects/research-ai/patent-landscape-analyzer` |
+| Lab Notebook Auto-Summarization Pipeline | Workflow | L2 | Extraction, Structuring | `projects/research-ai/lab-notebook-auto-summarization-pipeline` |
 
 ---
 
@@ -541,6 +565,7 @@ Paths are repository-relative. Each path contains **`README.md`** and **`archite
 | Name | System Type | Complexity | Capabilities | Path |
 |------|-------------|------------|--------------|------|
 | Podcast to Social Snippet Generator | Workflow | L3 | Multimodal, Extraction | `projects/creator-ai/podcast-to-social-snippet-generator` |
+| Script to Storyboard Generation System | Workflow | L4 | Multimodal, Planning | `projects/creator-ai/script-to-storyboard-generation-system` |
 
 ---
 
@@ -559,6 +584,12 @@ Paths are repository-relative. Each path contains **`README.md`** and **`archite
 | Deepfake Detection Proxy | Workflow | L4 | Analysis, Monitoring | `projects/security-ai/deepfake-detection-proxy` |
 | PII Redaction Gateway | Workflow | L2 | Extraction, Privacy | `projects/security-ai/pii-redaction-gateway` |
 | Zero Trust Behavioral Authenticator | Agent | L4 | Monitoring, Decision making | `projects/security-ai/zero-trust-behavioral-authenticator` |
+| Automated Phishing Takedown Agent | Agent | L3 | Analysis, Automation | `projects/security-ai/automated-phishing-takedown-agent` |
+| Continuous Insider Threat Detection Agent | Agent | L4 | Behavioral analysis, Monitoring | `projects/security-ai/continuous-insider-threat-detection-agent` |
+
+*Note:* **`AI Phishing Detection System`** (`projects/security/ai-phishing-detection-system`) focuses on **classification at the mailbox/ingress edge**; **Automated Phishing Takedown Agent** focuses on **post-detection abuse response** (evidence bundles, provider workflows).
+
+*Note:* **`Zero Trust Behavioral Authenticator`** focuses on **session/access trust signals**; **Continuous Insider Threat Detection Agent** focuses on **insider-risk case building** (cross-system UEBA-style correlation to SIEM).
 
 ---
 
@@ -577,6 +608,22 @@ Paths are repository-relative. Each path contains **`README.md`** and **`archite
 |------|-------------|------------|--------------|------|
 | Container Loading Optimization Agent | Agent | L4 | Optimization, Planning | `projects/logistics-ai/container-loading-optimization-agent` |
 | Port Congestion Prediction Agent | Agent | L3 | Prediction, Analysis | `projects/logistics-ai/port-congestion-prediction-agent` |
+
+---
+
+### 🌍 Climate AI
+
+| Name | System Type | Complexity | Capabilities | Path |
+|------|-------------|------------|--------------|------|
+| Climate Risk Scenario Simulation Agent | Agent | L4 | Simulation, Prediction | `projects/climate-ai/climate-risk-scenario-simulation-agent` |
+
+---
+
+### 🛰️ Geo AI
+
+| Name | System Type | Complexity | Capabilities | Path |
+|------|-------------|------------|--------------|------|
+| Satellite Change Detection Workflow | Workflow | L4 | Multimodal, Detection | `projects/geo-ai/satellite-change-detection-workflow` |
 
 ---
 
