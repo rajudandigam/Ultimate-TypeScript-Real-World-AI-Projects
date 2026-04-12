@@ -16,9 +16,9 @@ This file is the **single registry** for catalog projects in this repository.
 
 | Category | Count |
 |---------|------:|
-| Total Projects | 156 |
-| Workflow / workflow-first | 55 |
-| Agent | 80 |
+| Total Projects | 185 |
+| Workflow / workflow-first | 63 |
+| Agent | 101 |
 | Multi-Agent | 21 |
 | Level 5 (production-grade target) | 39 |
 
@@ -282,6 +282,13 @@ Paths are repository-relative. Each path contains **`README.md`** and **`archite
 | Name | System Type | Complexity | Capabilities | Path |
 |------|-------------|------------|--------------|------|
 | Multi-Agent Marketing Campaign System | Multi-Agent | L4 | Planning, Content Generation | `projects/marketing/multi-agent-marketing-campaign-system` |
+| Lead Scoring & Qualification Agent | Agent | L3 | Prediction, Personalization | `projects/marketing/lead-scoring-qualification-agent` |
+| Personalized Email Campaign Generator | Agent | L3 | Generation, Personalization | `projects/marketing/personalized-email-campaign-generator` |
+| Ad Creative Optimization Agent | Agent | L3 | Optimization, Generation | `projects/marketing/ad-creative-optimization-agent` |
+| Content Marketing Strategy Agent | Agent | L3 | Planning, Retrieval | `projects/marketing/content-marketing-strategy-agent` |
+| Sales Forecasting Intelligence System | Agent | L3 | Prediction, Analytics | `projects/marketing/sales-forecasting-intelligence-system` |
+| Competitive Intelligence Monitoring Agent | Agent | L3 | Monitoring, Retrieval | `projects/marketing/competitive-intelligence-monitoring-agent` |
+| Social Media Content Automation Agent | Agent | L2 | Generation, Personalization | `projects/marketing/social-media-content-automation-agent` |
 
 ---
 
@@ -290,6 +297,11 @@ Paths are repository-relative. Each path contains **`README.md`** and **`archite
 | Name | System Type | Complexity | Capabilities | Path |
 |------|-------------|------------|--------------|------|
 | AI News Personalization Engine | Agent | L3 | Personalization | `projects/media/ai-news-personalization-engine` |
+| Automated Video Editing Agent | Agent | L3 | Multimodal, Generation | `projects/media/automated-video-editing-agent` |
+| Podcast Insight Extraction Agent | Agent | L2 | Extraction, Summarization | `projects/media/podcast-insight-extraction-agent` |
+| Plagiarism & Copyright Detection System | Workflow | L2 | Detection, Monitoring | `projects/media/plagiarism-copyright-detection-system` |
+| Automated Subtitle Generation System | Workflow | L2 | Multimodal, Automation | `projects/media/automated-subtitle-generation-system` |
+| Content Performance Prediction Agent | Agent | L3 | Prediction, Analytics | `projects/media/content-performance-prediction-agent` |
 
 ---
 
@@ -334,6 +346,24 @@ Paths are repository-relative. Each path contains **`README.md`** and **`archite
 | Name | System Type | Complexity | Capabilities | Path |
 |------|-------------|------------|--------------|------|
 | AI Supply Chain Optimization System | Multi-Agent | L5 | Optimization | `projects/logistics/ai-supply-chain-optimization-system` |
+| Demand Forecasting Agent | Agent | L3 | Prediction, Analytics | `projects/logistics/demand-forecasting-agent` |
+| Delivery Route Optimization Agent | Agent | L3 | Optimization, Planning | `projects/logistics/delivery-route-optimization-agent` |
+| Supplier Risk Monitoring System | Workflow | L3 | Monitoring, Risk analysis | `projects/logistics/supplier-risk-monitoring-system` |
+| Warehouse Layout Optimization Agent | Agent | L3 | Optimization, Simulation | `projects/logistics/warehouse-layout-optimization-agent` |
+| Shipment Tracking Intelligence System | Workflow | L2 | Monitoring, Detection | `projects/logistics/shipment-tracking-intelligence-system` |
+| Inventory Replenishment Automation Agent | Agent | L3 | Automation, Optimization | `projects/logistics/inventory-replenishment-automation-agent` |
+
+---
+
+### 🏠 Real Estate
+
+| Name | System Type | Complexity | Capabilities | Path |
+|------|-------------|------------|--------------|------|
+| Property Valuation Intelligence Agent | Agent | L3 | Prediction, Analytics | `projects/real-estate/property-valuation-intelligence-agent` |
+| Smart Property Matching System | Agent | L3 | Matching, Retrieval | `projects/real-estate/smart-property-matching-system` |
+| Lease Agreement Analysis Agent | Agent | L2 | Extraction, Risk analysis | `projects/real-estate/lease-agreement-analysis-agent` |
+| Maintenance Request Automation System | Workflow | L2 | Automation, Routing | `projects/real-estate/maintenance-request-automation-system` |
+| Real Estate Investment Analyzer | Agent | L3 | Financial analysis, Prediction | `projects/real-estate/real-estate-investment-analyzer` |
 
 ---
 
@@ -343,6 +373,12 @@ Paths are repository-relative. Each path contains **`README.md`** and **`archite
 |------|-------------|------------|--------------|------|
 | AI Hiring Assistant | Agent | L3 | Reasoning, Matching | `projects/hr/ai-hiring-assistant` |
 | AI Resume Parsing + Ranking System | Workflow → Agent | L3 | Extraction, Ranking | `projects/hr/ai-resume-parsing-ranking-system` |
+| Resume Screening & Ranking System | Workflow | L2 | Matching, Ranking | `projects/hr/resume-screening-ranking-system` |
+| Interview Question Generation Agent | Agent | L2 | Generation | `projects/hr/interview-question-generation-agent` |
+| Candidate Sourcing Agent | Agent | L3 | Retrieval, Matching | `projects/hr/candidate-sourcing-agent` |
+| Employee Onboarding Automation System | Workflow | L2 | Automation, Orchestration | `projects/hr/employee-onboarding-automation-system` |
+| Performance Review Intelligence Agent | Agent | L3 | Analysis, Planning | `projects/hr/performance-review-intelligence-agent` |
+| Employee Sentiment Monitoring System | Workflow | L2 | Monitoring, Prediction | `projects/hr/employee-sentiment-monitoring-system` |
 
 ---
 
