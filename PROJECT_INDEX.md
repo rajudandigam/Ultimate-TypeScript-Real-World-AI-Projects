@@ -16,9 +16,9 @@ This file is the **single registry** for catalog projects in this repository.
 
 | Category | Count |
 |---------|------:|
-| Total Projects | 129 |
-| Workflow / workflow-first | 44 |
-| Agent | 64 |
+| Total Projects | 156 |
+| Workflow / workflow-first | 55 |
+| Agent | 80 |
 | Multi-Agent | 21 |
 | Level 5 (production-grade target) | 39 |
 
@@ -69,6 +69,15 @@ Paths are repository-relative. Each path contains **`README.md`** and **`archite
 | Performance Regression Detector | Workflow | L3 | Monitoring | `projects/devtools/performance-regression-detector` |
 | Infrastructure Cost Optimization Agent | Agent | L4 | Optimization | `projects/devtools/infrastructure-cost-optimization-agent` |
 | API Design Validator | Agent | L2 | Validation | `projects/devtools/api-design-validator` |
+| Codebase Complexity Analyzer | Workflow | L2 | Analysis | `projects/devtools/codebase-complexity-analyzer` |
+| CI/CD Pipeline Optimization Agent | Agent | L3 | Optimization | `projects/devtools/cicd-pipeline-optimization-agent` |
+| Smart Log Analysis Agent | Agent | L3 | Detection, Retrieval | `projects/devtools/smart-log-analysis-agent` |
+| Long-Running Coding Agent (Task Decomposition Engine) | Agent | L4 | Planning | `projects/devtools/long-running-coding-task-decomposition-engine` |
+| Codebase Migration Automation System | Workflow | L3 | Transformation | `projects/devtools/codebase-migration-automation-system` |
+| REST API Orchestration Agent | Agent | L3 | Orchestration | `projects/devtools/rest-api-orchestration-agent` |
+| Natural Language ↔ SQL Engine | Workflow | L2 | Translation | `projects/devtools/natural-language-sql-engine` |
+| IDE Code Completion Agent (Copilot Alternative) | Agent | L3 | Generation | `projects/devtools/ide-code-completion-agent` |
+| Real-Time Conversation Memory System | Workflow | L2 | Memory | `projects/devtools/real-time-conversation-memory-system` |
 
 ---
 
@@ -99,6 +108,23 @@ Paths are repository-relative. Each path contains **`README.md`** and **`archite
 | AI Meeting Copilot | Agent | L3 | Summarization, Decision making, Memory | `projects/productivity/ai-meeting-copilot` |
 | Meeting Notes → Action Workflow | Workflow | L2–L3 | Extraction, Automation | `projects/productivity/meeting-notes-action-workflow` |
 | AI Spreadsheet Copilot | Agent | L4 | Analysis | `projects/productivity/ai-spreadsheet-copilot` |
+| Smart Calendar Scheduling Agent | Agent | L3 | Optimization | `projects/productivity/smart-calendar-scheduling-agent` |
+| Intelligent Email Drafting Assistant | Agent | L2 | Generation | `projects/productivity/intelligent-email-drafting-assistant` |
+| Project Status Aggregation System | Workflow | L2 | Aggregation | `projects/productivity/project-status-aggregation-system` |
+| Focus Time Protection Agent | Agent | L2 | Automation | `projects/productivity/focus-time-protection-agent` |
+| Team Workload Optimization Agent | Agent | L3 | Optimization | `projects/productivity/team-workload-optimization-agent` |
+
+---
+
+### 🎧 Support
+
+| Name | System Type | Complexity | Capabilities | Path |
+|------|-------------|------------|--------------|------|
+| Multi-Channel Support Routing Agent | Agent | L3 | Routing | `projects/support/multi-channel-support-routing-agent` |
+| Knowledge Base Auto-Curation System | Workflow | L2 | Generation | `projects/support/knowledge-base-auto-curation-system` |
+| SLA Compliance Monitoring System | Workflow | L2 | Monitoring | `projects/support/sla-compliance-monitoring-system` |
+| Customer Journey Intelligence Agent | Agent | L3 | Prediction | `projects/support/customer-journey-intelligence-agent` |
+| Automated Refund Decision Engine | Workflow | L2 | Decision-making | `projects/support/automated-refund-decision-engine` |
 
 ---
 
@@ -159,6 +185,17 @@ Paths are repository-relative. Each path contains **`README.md`** and **`archite
 
 ---
 
+### ⚖️ Legal
+
+| Name | System Type | Complexity | Capabilities | Path |
+|------|-------------|------------|--------------|------|
+| Regulatory Change Impact Analyzer | Workflow | L3 | Monitoring | `projects/legal/regulatory-change-impact-analyzer` |
+| Contract Clause Extraction System | Workflow | L2 | Extraction | `projects/legal/contract-clause-extraction-system` |
+| Privacy Impact Assessment Agent | Agent | L3 | Compliance | `projects/legal/privacy-impact-assessment-agent` |
+| Litigation Risk Prediction Agent | Agent | L4 | Prediction | `projects/legal/litigation-risk-prediction-agent` |
+
+---
+
 ### 💼 Sales
 
 | Name | System Type | Complexity | Capabilities | Path |
@@ -175,6 +212,10 @@ Paths are repository-relative. Each path contains **`README.md`** and **`archite
 | AI Personalized Learning Path Generator | Agent | L4 | Planning, Personalization | `projects/education/ai-personalized-learning-path-generator` |
 | AI Homework Assistant with Reasoning | Agent | L3 | Reasoning | `projects/education/ai-homework-assistant-with-reasoning` |
 | Multi-Agent Tutoring System | Multi-Agent | L5 | Teaching, Adaptation | `projects/education/multi-agent-tutoring-system` |
+| Automated Essay Grading System | Agent | L3 | Evaluation | `projects/education/automated-essay-grading-system` |
+| Student Engagement Prediction System | Workflow | L2 | Prediction | `projects/education/student-engagement-prediction-system` |
+| Automated Question Generation Agent | Agent | L2 | Generation | `projects/education/automated-question-generation-agent` |
+| Peer Learning Group Matcher | Agent | L2 | Matching | `projects/education/peer-learning-group-matcher` |
 
 ---
 
