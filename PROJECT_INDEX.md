@@ -16,11 +16,11 @@ This file is the **single registry** for catalog projects in this repository.
 
 | Category | Count |
 |---------|------:|
-| Total Projects | 43 |
-| Workflow / workflow-first | 19 |
-| Agent | 15 |
-| Multi-Agent | 9 |
-| Level 5 (production-grade target) | 22 |
+| Total Projects | 63 |
+| Workflow / workflow-first | 21 |
+| Agent | 28 |
+| Multi-Agent | 14 |
+| Level 5 (production-grade target) | 32 |
 
 **How rows are counted:** Each project has one **primary** row in exactly one domain table. “Workflow / workflow-first” includes systems where a **durable workflow** is the spine (including hybrid **Workflow + Agent** or **Workflow → Agent** designs). “Level 5” counts projects whose brief targets **Level 5** complexity.
 
@@ -37,6 +37,9 @@ Paths are repository-relative. Each path contains **`README.md`** and **`archite
 | Name | System Type | Complexity | Capabilities | Path |
 |------|-------------|------------|--------------|------|
 | AI Travel Planner | Multi-Agent | L4 | Planning, RAG, Decision making, Personalization | `projects/travel/ai-travel-planner` |
+| AI Trip Personalization Engine | Agent | L4 | Personalization, Retrieval | `projects/travel/ai-trip-personalization-engine` |
+| Multi-Agent Travel Booking Optimizer | Multi-Agent | L5 | Decision making, Optimization | `projects/travel/multi-agent-travel-booking-optimizer` |
+| AI Travel Cost Prediction System | Agent | L4 | Prediction, Analytics | `projects/travel/ai-travel-cost-prediction-system` |
 
 ---
 
@@ -110,6 +113,65 @@ Paths are repository-relative. Each path contains **`README.md`** and **`archite
 | Name | System Type | Complexity | Capabilities | Path |
 |------|-------------|------------|--------------|------|
 | AI Learning Tutor | Agent | L3 | Personalization, Reasoning | `projects/education/ai-learning-tutor` |
+| AI Personalized Learning Path Generator | Agent | L4 | Planning, Personalization | `projects/education/ai-personalized-learning-path-generator` |
+| AI Homework Assistant with Reasoning | Agent | L3 | Reasoning | `projects/education/ai-homework-assistant-with-reasoning` |
+| Multi-Agent Tutoring System | Multi-Agent | L5 | Teaching, Adaptation | `projects/education/multi-agent-tutoring-system` |
+
+---
+
+### 🧑‍🤝‍🧑 Personal AI
+
+| Name | System Type | Complexity | Capabilities | Path |
+|------|-------------|------------|--------------|------|
+| Personal AI Life Assistant | Agent | L5 | Memory, Planning | `projects/personal-ai/personal-ai-life-assistant` |
+| AI Habit Tracking + Coaching System | Agent | L4 | Monitoring, Feedback | `projects/personal-ai/ai-habit-tracking-coaching-system` |
+| AI Daily Planner with Memory | Workflow → Agent | L4 | Planning, Memory | `projects/personal-ai/ai-daily-planner-with-memory` |
+
+---
+
+### 🔐 Security
+
+| Name | System Type | Complexity | Capabilities | Path |
+|------|-------------|------------|--------------|------|
+| AI Phishing Detection System | Agent | L4 | Classification, Detection | `projects/security/ai-phishing-detection-system` |
+| AI Threat Intelligence Aggregator | Agent | L5 | Retrieval, Analysis | `projects/security/ai-threat-intelligence-aggregator` |
+| Multi-Agent Cyber Defense System | Multi-Agent | L5 | Detection, Response | `projects/security/multi-agent-cyber-defense-system` |
+
+---
+
+### 🌐 Web3
+
+| Name | System Type | Complexity | Capabilities | Path |
+|------|-------------|------------|--------------|------|
+| AI Smart Contract Auditor | Agent | L5 | Analysis, Security | `projects/web3/ai-smart-contract-auditor` |
+| AI DAO Governance Assistant | Agent | L4 | Decision-making | `projects/web3/ai-dao-governance-assistant` |
+
+---
+
+### 🏭 IoT
+
+| Name | System Type | Complexity | Capabilities | Path |
+|------|-------------|------------|--------------|------|
+| AI Smart Home Automation Agent | Agent | L4 | Automation | `projects/iot/ai-smart-home-automation-agent` |
+| Multi-Agent Smart City Traffic System | Multi-Agent | L5 | Optimization | `projects/iot/multi-agent-smart-city-traffic-system` |
+
+---
+
+### 🎮 Gaming
+
+| Name | System Type | Complexity | Capabilities | Path |
+|------|-------------|------------|--------------|------|
+| AI NPC Behavior Engine | Agent | L4 | Reasoning | `projects/gaming/ai-npc-behavior-engine` |
+| Multi-Agent Game Strategy Simulator | Multi-Agent | L5 | Strategy, Simulation | `projects/gaming/multi-agent-game-strategy-simulator` |
+
+---
+
+### 🎤 Voice
+
+| Name | System Type | Complexity | Capabilities | Path |
+|------|-------------|------------|--------------|------|
+| Real-Time Voice AI Assistant | Agent | L5 | Speech, Reasoning | `projects/voice/real-time-voice-ai-assistant` |
+| AI Call Center Automation System | Workflow → Agent | L5 | Automation | `projects/voice/ai-call-center-automation-system` |
 
 ---
 
