@@ -16,11 +16,11 @@ This file is the **single registry** for catalog projects in this repository.
 
 | Category | Count |
 |---------|------:|
-| Total Projects | 220 |
-| Workflow / workflow-first | 68 |
-| Agent | 122 |
-| Multi-Agent | 30 |
-| Level 5 (production-grade target) | 40 |
+| Total Projects | 238 |
+| Workflow / workflow-first | 71 |
+| Agent | 135 |
+| Multi-Agent | 32 |
+| Level 5 (production-grade target) | 42 |
 
 **How rows are counted:** Each project has one **primary** row in exactly one domain table. “Workflow / workflow-first” includes systems where a **durable workflow** is the spine (including hybrid **Workflow + Agent** or **Workflow → Agent** designs). “Level 5” counts projects whose brief targets **Level 5** complexity.
 
@@ -500,11 +500,94 @@ Paths are repository-relative. Each path contains **`README.md`** and **`archite
 
 ---
 
+### 🏭 Industrial AI
+
+| Name | System Type | Complexity | Capabilities | Path |
+|------|-------------|------------|--------------|------|
+| Predictive Maintenance Orchestrator | Multi-Agent | L5 | Monitoring, Prediction, Planning | `projects/industrial-ai/predictive-maintenance-orchestrator` |
+| Digital Twin Reasoning Agent | Agent | L4 | Simulation, Reasoning, Retrieval | `projects/industrial-ai/digital-twin-reasoning-agent` |
+
+---
+
+### 🌾 Agri AI
+
+| Name | System Type | Complexity | Capabilities | Path |
+|------|-------------|------------|--------------|------|
+| Precision Irrigation Agent | Agent | L3 | Optimization, Decision making | `projects/agri-ai/precision-irrigation-agent` |
+| Crop Disease Diagnostic Agent | Agent | L3 | Multimodal, Retrieval | `projects/agri-ai/crop-disease-diagnostic-agent` |
+
+---
+
+### ⚡ Energy AI
+
+| Name | System Type | Complexity | Capabilities | Path |
+|------|-------------|------------|--------------|------|
+| Grid Load Balancing Multi-Agent System | Multi-Agent | L5 | Optimization, Real-time Processing | `projects/energy-ai/grid-load-balancing-multi-agent-system` |
+| EV Charging Optimization Agent | Agent | L2 | Optimization, Automation | `projects/energy-ai/ev-charging-optimization-agent` |
+
+---
+
+### 🧪 Research AI
+
+| Name | System Type | Complexity | Capabilities | Path |
+|------|-------------|------------|--------------|------|
+| Chemical Synthesis Planning Agent | Agent | L4 | Reasoning, Planning | `projects/research-ai/chemical-synthesis-planning-agent` |
+| Patent Landscape Analyzer | Agent | L3 | Retrieval, Research | `projects/research-ai/patent-landscape-analyzer` |
+
+---
+
+### 🎬 Creator AI
+
+| Name | System Type | Complexity | Capabilities | Path |
+|------|-------------|------------|--------------|------|
+| Podcast to Social Snippet Generator | Workflow | L3 | Multimodal, Extraction | `projects/creator-ai/podcast-to-social-snippet-generator` |
+
+---
+
+### 🏛️ Gov AI
+
+| Name | System Type | Complexity | Capabilities | Path |
+|------|-------------|------------|--------------|------|
+| Public Benefit Eligibility Agent | Agent | L2 | Reasoning, Compliance | `projects/gov-ai/public-benefit-eligibility-agent` |
+
+---
+
+### 🛡️ Security AI
+
+| Name | System Type | Complexity | Capabilities | Path |
+|------|-------------|------------|--------------|------|
+| Deepfake Detection Proxy | Workflow | L4 | Analysis, Monitoring | `projects/security-ai/deepfake-detection-proxy` |
+| PII Redaction Gateway | Workflow | L2 | Extraction, Privacy | `projects/security-ai/pii-redaction-gateway` |
+| Zero Trust Behavioral Authenticator | Agent | L4 | Monitoring, Decision making | `projects/security-ai/zero-trust-behavioral-authenticator` |
+
+---
+
+### 🧘 Health AI
+
+| Name | System Type | Complexity | Capabilities | Path |
+|------|-------------|------------|--------------|------|
+| AI Sleep Optimization Agent | Agent | L2 | Personalization, Monitoring | `projects/health-ai/ai-sleep-optimization-agent` |
+| Smart Fridge Meal Planner Agent | Agent | L3 | Multimodal, Planning | `projects/health-ai/smart-fridge-meal-planner-agent` |
+
+---
+
+### 🚢 Logistics AI
+
+| Name | System Type | Complexity | Capabilities | Path |
+|------|-------------|------------|--------------|------|
+| Container Loading Optimization Agent | Agent | L4 | Optimization, Planning | `projects/logistics-ai/container-loading-optimization-agent` |
+| Port Congestion Prediction Agent | Agent | L3 | Prediction, Analysis | `projects/logistics-ai/port-congestion-prediction-agent` |
+
+---
+
 ### 🌱 Sustainability
 
 | Name | System Type | Complexity | Capabilities | Path |
 |------|-------------|------------|--------------|------|
 | Climate & Sustainability Intelligence Agent | Agent | L3 | Analytics, Planning | `projects/sustainability/climate-sustainability-intelligence-agent` |
+| Carbon Footprint Ledger Agent | Agent | L3 | Analysis, Compliance | `projects/sustainability/carbon-footprint-ledger-agent` |
+
+*Note:* **“AI NPC Dialogue Orchestrator”** is not a separate catalog row—it overlaps **`AI NPC Behavior Engine`** (`projects/gaming/ai-npc-behavior-engine`); extend that brief for memory-heavy dialogue orchestration. **“Urban Traffic Flow Multi-Agent System”** overlaps **`Multi-Agent Smart City Traffic System`** (`projects/iot/multi-agent-smart-city-traffic-system`).
 
 ---
 
