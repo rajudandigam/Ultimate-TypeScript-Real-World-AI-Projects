@@ -16,10 +16,10 @@ This file is the **single registry** for catalog projects in this repository.
 
 | Category | Count |
 |---------|------:|
-| Total Projects | 209 |
+| Total Projects | 220 |
 | Workflow / workflow-first | 68 |
-| Agent | 113 |
-| Multi-Agent | 28 |
+| Agent | 122 |
+| Multi-Agent | 30 |
 | Level 5 (production-grade target) | 40 |
 
 **How rows are counted:** Each project has one **primary** row in exactly one domain table. “Workflow / workflow-first” includes systems where a **durable workflow** is the spine (including hybrid **Workflow + Agent** or **Workflow → Agent** designs). “Level 5” counts projects whose brief targets **Level 5** complexity.
@@ -49,6 +49,18 @@ Paths are repository-relative. Each path contains **`README.md`** and **`archite
 | Travel Budget Assistant (Real-Time) | Agent | L2 | Tracking, Personalization | `projects/travel/travel-budget-assistant-real-time` |
 | Group Travel Coordination Agent | Multi-Agent | L4 | Decision-making, Coordination | `projects/travel/group-travel-coordination-agent` |
 | Dynamic Pricing Optimization Engine | Agent | L3 | Prediction, Optimization | `projects/travel/dynamic-pricing-optimization-engine` |
+
+---
+
+### 🍽️ Lifestyle
+
+| Name | System Type | Complexity | Capabilities | Path |
+|------|-------------|------------|--------------|------|
+| Group Restaurant Decision Agent | Multi-Agent | L3 | Decision making, Coordination | `projects/lifestyle/group-restaurant-decision-agent` |
+| Smart Hike Planning Agent | Agent | L3 | Planning, Retrieval | `projects/lifestyle/smart-hike-planning-agent` |
+| Potluck Coordination Agent | Multi-Agent | L3 | Coordination, Planning | `projects/lifestyle/potluck-coordination-agent` |
+| Event Catering Planning System | Agent | L3 | Planning, Optimization | `projects/lifestyle/event-catering-planning-system` |
+| Weekend Activity Planner Agent | Agent | L3 | Recommendation, Planning | `projects/lifestyle/weekend-activity-planner-agent` |
 
 ---
 
@@ -133,6 +145,7 @@ Paths are repository-relative. Each path contains **`README.md`** and **`archite
 | Focus Time Protection Agent | Agent | L2 | Automation | `projects/productivity/focus-time-protection-agent` |
 | Team Workload Optimization Agent | Agent | L3 | Optimization | `projects/productivity/team-workload-optimization-agent` |
 | Slack/Teams Intelligent Summarization System | Workflow | L2 | Summarization, Automation | `projects/productivity/slack-teams-intelligent-summarization-system` |
+| Freelancer Workday Optimization Agent | Agent | L3 | Planning, Prediction | `projects/productivity/freelancer-workday-optimization-agent` |
 
 ---
 
@@ -249,6 +262,18 @@ Paths are repository-relative. Each path contains **`README.md`** and **`archite
 | Personal AI Life Assistant | Agent | L5 | Memory, Planning | `projects/personal-ai/personal-ai-life-assistant` |
 | AI Habit Tracking + Coaching System | Agent | L4 | Monitoring, Feedback | `projects/personal-ai/ai-habit-tracking-coaching-system` |
 | AI Daily Planner with Memory | Workflow → Agent | L4 | Planning, Memory | `projects/personal-ai/ai-daily-planner-with-memory` |
+| Weekly Grocery Optimization Agent | Agent | L3 | Optimization, Personalization | `projects/personal-ai/weekly-grocery-optimization-agent` |
+| Home Maintenance Intelligence System | Agent | L3 | Prediction, Planning | `projects/personal-ai/home-maintenance-intelligence-system` |
+| Bill Splitting & Fairness Optimization Agent | Agent | L3 | Optimization, Decision making | `projects/personal-ai/bill-splitting-fairness-optimization-agent` |
+
+---
+
+### 👨‍👩‍👧 Family
+
+| Name | System Type | Complexity | Capabilities | Path |
+|------|-------------|------------|--------------|------|
+| School Morning Routine Planner | Agent | L2 | Planning, Automation | `projects/family/school-morning-routine-planner` |
+| Kids Activity & Learning Planner Agent | Agent | L3 | Personalization, Planning | `projects/family/kids-activity-learning-planner-agent` |
 
 ---
 
