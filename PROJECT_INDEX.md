@@ -16,11 +16,11 @@ This file is the **single registry** for catalog projects in this repository.
 
 | Category | Count |
 |---------|------:|
-| Total Projects | 99 |
-| Workflow / workflow-first | 33 |
-| Agent | 46 |
-| Multi-Agent | 20 |
-| Level 5 (production-grade target) | 37 |
+| Total Projects | 129 |
+| Workflow / workflow-first | 44 |
+| Agent | 64 |
+| Multi-Agent | 21 |
+| Level 5 (production-grade target) | 39 |
 
 **How rows are counted:** Each project has one **primary** row in exactly one domain table. “Workflow / workflow-first” includes systems where a **durable workflow** is the spine (including hybrid **Workflow + Agent** or **Workflow → Agent** designs). “Level 5” counts projects whose brief targets **Level 5** complexity.
 
@@ -63,6 +63,12 @@ Paths are repository-relative. Each path contains **`README.md`** and **`archite
 | AI CI Failure Analyzer | Agent | L3 | Reasoning, Retrieval, Debugging | `projects/devtools/ai-ci-failure-analyzer` |
 | AI Test Case Generator | Workflow → Agent | L3 | Generation, Reasoning | `projects/devtools/ai-test-case-generator` |
 | AI API Contract Validator | Agent | L3 | Validation, Reasoning | `projects/devtools/ai-api-contract-validator` |
+| Automated Test Generation Agent | Agent | L3 | Generation | `projects/devtools/automated-test-generation-agent` |
+| Bug Triage & Prioritization Agent | Agent | L3 | Classification | `projects/devtools/bug-triage-prioritization-agent` |
+| Dependency Security Auditor | Workflow | L3 | Security | `projects/devtools/dependency-security-auditor` |
+| Performance Regression Detector | Workflow | L3 | Monitoring | `projects/devtools/performance-regression-detector` |
+| Infrastructure Cost Optimization Agent | Agent | L4 | Optimization | `projects/devtools/infrastructure-cost-optimization-agent` |
+| API Design Validator | Agent | L2 | Validation | `projects/devtools/api-design-validator` |
 
 ---
 
@@ -118,6 +124,30 @@ Paths are repository-relative. Each path contains **`README.md`** and **`archite
 | Algorithmic Trading Strategy Validator | Multi-Agent | L5 | Simulation, Optimization | `projects/fintech/algorithmic-trading-strategy-validator` |
 | AML Investigation Multi-Agent System | Multi-Agent | L5 | Detection, Analysis | `projects/fintech/aml-investigation-multi-agent-system` |
 | Intelligent Payment Routing Agent | Agent | L3 | Optimization | `projects/fintech/intelligent-payment-routing-agent` |
+| Financial Document Q&A System | Agent | L3 | Retrieval, Reasoning | `projects/fintech/financial-document-qa-system` |
+| Regulatory Compliance Monitor | Workflow | L3 | Monitoring, Validation | `projects/fintech/regulatory-compliance-monitor` |
+| Personal Budget Assistant | Agent | L2 | Personalization, Analytics | `projects/fintech/personal-budget-assistant` |
+| Invoice Processing & Reconciliation System | Workflow | L2 | Extraction, Matching | `projects/fintech/invoice-processing-reconciliation-system` |
+| FinGPT Financial Intelligence Agent | Agent | L4 | Prediction, Sentiment | `projects/fintech/fingpt-financial-intelligence-agent` |
+| Reinforcement Learning Trading Agent | Agent | L5 | Learning, Optimization | `projects/fintech/reinforcement-learning-trading-agent` |
+| Cryptocurrency Portfolio Manager | Agent | L3 | Optimization, Tracking | `projects/fintech/cryptocurrency-portfolio-manager` |
+
+---
+
+### 🏥 Healthcare
+
+| Name | System Type | Complexity | Capabilities | Path |
+|------|-------------|------------|--------------|------|
+| Patient Intake Automation System | Workflow | L2 | Extraction, Automation | `projects/healthcare/patient-intake-automation-system` |
+| Medical Imaging Analysis Assistant | Agent | L4 | Computer vision, Detection | `projects/healthcare/medical-imaging-analysis-assistant` |
+| Clinical Trial Matching Agent | Agent | L3 | Matching, Retrieval | `projects/healthcare/clinical-trial-matching-agent` |
+| Drug Interaction Checker | Workflow | L2 | Validation | `projects/healthcare/drug-interaction-checker` |
+| Medical Coding & Billing Assistant | Workflow | L3 | Classification | `projects/healthcare/medical-coding-billing-assistant` |
+| Mental Health Support Agent | Agent | L3 | Conversational, Monitoring | `projects/healthcare/mental-health-support-agent` |
+| Hospital Resource Optimization System | Multi-Agent | L5 | Optimization, Planning | `projects/healthcare/hospital-resource-optimization-system` |
+| Medication Adherence Monitoring System | Workflow | L2 | Monitoring | `projects/healthcare/medication-adherence-monitoring-system` |
+| Health Data Interoperability (FHIR Agent System) | Agent | L4 | Integration | `projects/healthcare/health-data-interoperability-fhir-agent-system` |
+| Clinical Note Generation Agent | Agent | L3 | Generation, Speech | `projects/healthcare/clinical-note-generation-agent` |
 
 ---
 
@@ -248,6 +278,13 @@ Paths are repository-relative. Each path contains **`README.md`** and **`archite
 | Multi-Agent Pricing Optimizer | Multi-Agent | L5 | Decision making, Optimization | `projects/ecommerce/multi-agent-pricing-optimizer` |
 | AI Pricing Experimentation Platform | Agent | L4 | Experimentation | `projects/ecommerce/ai-pricing-experimentation-platform` |
 | AI Shopping Assistant (Conversational Commerce) | Agent | L4 | Recommendation | `projects/ecommerce/ai-shopping-assistant-conversational-commerce` |
+| Visual Search & Style Matching Engine | Agent | L3 | Multimodal, Retrieval | `projects/ecommerce/visual-search-style-matching-engine` |
+| Smart Cart Optimization Agent | Agent | L2 | Recommendation | `projects/ecommerce/smart-cart-optimization-agent` |
+| Size & Fit Recommendation Agent | Agent | L3 | Prediction | `projects/ecommerce/size-fit-recommendation-agent` |
+| Competitive Price Monitoring System | Workflow | L2 | Monitoring | `projects/ecommerce/competitive-price-monitoring-system` |
+| Return Fraud Detection System | Workflow | L3 | Detection | `projects/ecommerce/return-fraud-detection-system` |
+| Multi-Channel Inventory Sync System | Workflow | L2 | Synchronization | `projects/ecommerce/multi-channel-inventory-sync-system` |
+| Abandoned Cart Recovery Agent | Agent | L2 | Personalization | `projects/ecommerce/abandoned-cart-recovery-agent` |
 
 ---
 
