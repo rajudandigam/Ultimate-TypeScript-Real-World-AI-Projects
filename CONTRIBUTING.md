@@ -7,7 +7,7 @@ Thank you for helping improve this catalog. The goal is **high-signal, productio
 ## Before you open a PR
 
 1. Read [`.cursor/guide.md`](.cursor/guide.md) — quality bar, categorization, and tone.
-2. Search [`PROJECT_INDEX.md`](PROJECT_INDEX.md) for similar names and problems. **Avoid duplicates** and near-duplicates (renamed chatbots).
+2. Search the [**Project catalog**](README.md#project-catalog) in [`README.md`](README.md) for similar names and problems. **Avoid duplicates** and near-duplicates (renamed chatbots). [`PROJECT_INDEX.md`](PROJECT_INDEX.md) is only a pointer to that section.
 3. Prefer contributions that teach **workflow vs agent vs multi-agent** tradeoffs, **guardrails**, **evaluation**, or **observability**.
 
 ---
@@ -48,7 +48,7 @@ Use [`templates/project-template.md`](templates/project-template.md) as a **chec
 
 - **Problem** and **why it matters**
 - **System type** (workflow, single agent, multi-agent) and **why**
-- **Complexity** (L1–L5): use [`.cursor/guide.md`](.cursor/guide.md) for definitions and stay **consistent** with how similar systems are tagged in [`PROJECT_INDEX.md`](PROJECT_INDEX.md)
+- **Complexity** (L1–L5): use [`.cursor/guide.md`](.cursor/guide.md) for definitions and stay **consistent** with how similar systems are tagged in the [Project catalog](README.md#project-catalog)
 - **Industry** and **capabilities**
 - **Suggested TypeScript stack**
 - **Architecture** (high level), **implementation steps**, **evaluation**
@@ -71,10 +71,10 @@ See any existing pair under `projects/` for rhythm and depth.
 
 ### 4. Register the project
 
-Add **exactly one** primary row to the correct domain table in [`PROJECT_INDEX.md`](PROJECT_INDEX.md):
+Add **exactly one** primary row to the correct domain table in the [**Project catalog**](README.md#project-catalog) section of [`README.md`](README.md):
 
 - **Name**, **System Type**, **Complexity**, **Capabilities**, **Path** (directory only, no trailing slash)
-- Update **summary counts** at the top if totals change (see the note in the index on how rows are counted).
+- Update **summary counts** in that same section if totals change (see the counting note there).
 
 Do not list the same conceptual project twice under different domains unless the **system behavior** is genuinely different (rare).
 
@@ -82,9 +82,9 @@ Do not list the same conceptual project twice under different domains unless the
 
 ## PR checklist
 
-- [ ] Checked `PROJECT_INDEX.md` for duplicates.
+- [ ] Checked the [Project catalog](README.md#project-catalog) for duplicates.
 - [ ] `README.md` + `architecture.md` present under `projects/<domain>/<slug>/`.
-- [ ] `PROJECT_INDEX.md` updated (row + counts if needed).
+- [ ] Root `README.md` **Project catalog** updated (row + counts if needed).
 - [ ] System type and L1–L5 level are defensible and match guide definitions.
 - [ ] Tone matches guide (practical, not hypey).
 
