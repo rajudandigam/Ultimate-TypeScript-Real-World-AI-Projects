@@ -1,4 +1,6 @@
-# Ultimate TypeScript Real-World AI Projects
+# 250+ Ultimate TypeScript Real-World AI Projects
+
+![Engineers collaborating on TypeScript AI workflows, agents, and multi-agent systems.](assets/readme-banner.png)
 
 **250+ production-ready workflows, agents, and multi-agent systems — TypeScript-first.**
 
