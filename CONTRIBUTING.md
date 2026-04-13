@@ -44,7 +44,7 @@ Use **kebab-case** slugs. If no domain fits, pick the closest industry bucket ra
 
 ### 2. `README.md`
 
-Mirror the **headings and depth** of an existing sibling in the same domain (for example [`projects/travel/ai-travel-planner/README.md`](projects/travel/ai-travel-planner/README.md)). Every brief should make it obvious:
+Mirror the **headings and depth** of an existing sibling in the same domain (for example [`projects/travel/ai-travel-planner/README.md`](projects/travel/ai-travel-planner/README.md)). Catalog entries should include the implementation-oriented block (after **Suggested TypeScript Stack**) marked `<!-- stack-guidance-enriched:v1 -->`, with **Recommended Stack**, **Suggested APIs and Integrations**, **Open Source Building Blocks**, **Stack Choice Guide**, and **Buildability Notes**. For new folders, run `python3 scripts/enrich_project_docs.py` once after the README exists; the script is idempotent. Every brief should make it obvious:
 
 - **Problem** and **why it matters**
 - **System type** (workflow, single agent, multi-agent) and **why**
@@ -59,7 +59,7 @@ Keep tone practical; match existing projects in the same domain when unsure.
 
 ### 3. `architecture.md`
 
-Complement the README with **engineering depth**, not a repeat of the marketing summary. Typical sections (adapt as needed):
+Complement the README with **engineering depth**, not a repeat of the marketing summary. Append the layer-oriented block marked `<!-- arch-stack-layers-enriched:v1 -->` (**Recommended Technical Architecture**, **Suggested Data and Infra Layer**, **Suggested Runtime and Deployment**, **Testing and Evaluation Strategy**, **Security and Permissions Layer**) when missing — `scripts/enrich_project_docs.py` adds it automatically. Typical earlier sections (adapt as needed):
 
 - System overview and **text diagram** of components
 - Core components and **data flow**

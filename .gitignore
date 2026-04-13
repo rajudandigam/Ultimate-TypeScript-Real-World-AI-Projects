@@ -1,2 +1,3 @@
 .cursor/*
 templates/*
+!templates/project-template.md

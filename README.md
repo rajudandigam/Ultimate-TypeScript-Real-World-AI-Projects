@@ -111,6 +111,7 @@ Concrete paths for all of these are in the [**Project catalog**](#project-catalo
 ```text
 README.md                 # Narrative + full project catalog (this file)
 CONTRIBUTING.md           # How to propose or extend catalog entries
+scripts/enrich_project_docs.py   # Adds stack + architecture layers (idempotent)
 projects/
   <domain>/               # e.g. devtools, travel, enterprise-ai
     <project-slug>/
