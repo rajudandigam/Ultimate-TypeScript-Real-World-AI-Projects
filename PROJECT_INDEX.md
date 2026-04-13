@@ -1,6 +1,6 @@
 # Project index (pointer)
 
-The **full project registry** (purpose, summary counts, every domain table, deduplication notes, future ideas, and contribution reminders) lives in **[`README.md` — Project catalog](README.md#project-catalog)**.
+The **full project registry** (purpose, summary counts, every domain table, deduplication notes, and contribution reminders) lives in **[`README.md` — Project catalog](README.md#project-catalog)**.
 
 **Contributors:** add or edit rows in **`README.md`** inside the `## Project catalog` section so the GitHub landing page stays complete. Keep summary counts in sync with the tables.
 

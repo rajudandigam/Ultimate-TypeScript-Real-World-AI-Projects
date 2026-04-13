@@ -1,14 +1,25 @@
 # Ultimate TypeScript Real-World AI Projects
 
-### Real-world agent systems, workflows, and multi-agent architectures
+**250+ production-ready workflows, agents, and multi-agent systems — TypeScript-first.**
 
-> Most AI repos teach you how to call an API. This one teaches you how to **build real AI systems** — production-oriented designs in **TypeScript**, not another pile of toy chatbots.
+Most AI repos stop at **call an API and hope it works.** Plenty of content teaches SDK calls; far less shows how to ship **systems that hold up in production**. This repo goes further: **real system design** — not chatbot demos.
 
----
+If you are trying to level up:
+
+- **Prompts → systems**
+- **Demos → production**
 
 ## Why this repo exists
 
-After building and reviewing many AI products, one pattern keeps showing up: teams stall at **“prompt + API call”** level. Production systems need **orchestration**, **decision-making**, **memory**, **failure handling**, and explicit **cost vs latency** tradeoffs. This collection bridges that gap with **system designs you can actually implement**.
+After building and reviewing real AI products, one wall kept showing up: **“We have prompts… now what?”** Teams stall at **prompt + API call** while the product still needs:
+
+- **Orchestration** — durable pipelines, handoffs, and control flow  
+- **Decision-making** — agents that choose under constraints, not just generate text  
+- **Memory** — what to retain, retrieve, and forget  
+- **Failure handling** — retries, fallbacks, guardrails, human-in-the-loop  
+- **Cost vs latency tradeoffs** — explicit budgets, not accidental bills  
+
+This collection bridges that gap with **practical blueprints** you can actually build: problems, architecture, TypeScript-friendly stacks, evaluation, failure modes, and scaling — **systems thinking applied to AI.**
 
 ---
 
@@ -115,7 +126,7 @@ Typical stacks referenced across briefs include **Node.js**, **Next.js**, **Open
 
 ## Project catalog
 
-This section is the **authoritative project registry**: purpose, summary counts, every domain table, deduplication notes, future ideas, and contribution reminders. [`PROJECT_INDEX.md`](PROJECT_INDEX.md) is a short pointer file for stable links and local search.
+This section is the **authoritative project registry**: purpose, summary counts, every domain table, deduplication notes, and contribution reminders. [`PROJECT_INDEX.md`](PROJECT_INDEX.md) is a short pointer file for stable links and local search.
 
 ---
 
@@ -752,16 +763,6 @@ Paths are repository-relative. Each path contains **`README.md`** and **`archite
 | Carbon Footprint Ledger Agent | Agent | L3 | Analysis, Compliance | [`projects/sustainability/carbon-footprint-ledger-agent`](projects/sustainability/carbon-footprint-ledger-agent) |
 
 *Note:* **“AI NPC Dialogue Orchestrator”** is not a separate catalog row—it overlaps **`AI NPC Behavior Engine`** ([`projects/gaming/ai-npc-behavior-engine`](projects/gaming/ai-npc-behavior-engine)); extend that brief for memory-heavy dialogue orchestration. **“Urban Traffic Flow Multi-Agent System”** overlaps **`Multi-Agent Smart City Traffic System`** ([`projects/iot/multi-agent-smart-city-traffic-system`](projects/iot/multi-agent-smart-city-traffic-system)).
-
----
-
-### 🧠 Future Ideas (Planned)
-
-All ideas that previously lived only in this section are now **represented as catalog projects** in the tables above (same names and domains). Use this area for **new** candidates only—after checking the tables—and keep each row specific enough that it would not merge cleanly into an existing brief.
-
-| Name | Domain | System Type | Complexity | Notes |
-|------|--------|---------------|------------|-------|
-| — | — | — | — | *No backlog rows right now.* |
 
 ---
 
