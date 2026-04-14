@@ -29,9 +29,10 @@ This collection bridges that gap with **practical blueprints** you can actually 
 
 | Category | Count |
 |---------|------:|
-| Total projects | 253 |
+| Total projects | 263 |
 | Workflow / workflow-first | 77 |
 | Agent | 144 |
+| Agentic UI (AG-UI) | 10 |
 | Multi-agent | 32 |
 | Level 5 (production-grade target) | 43 |
 
@@ -112,6 +113,7 @@ Concrete paths for all of these are in the [**Project catalog**](#project-catalo
 README.md                 # Narrative + full project catalog (this file)
 CONTRIBUTING.md           # How to propose or extend catalog entries
 scripts/enrich_project_docs.py   # Adds stack + architecture layers (idempotent)
+scripts/apply_agentic_ui_projects.py + scripts/agentic_ui_projects.json  # Regenerate AG-UI batch (dev)
 projects/
   <domain>/               # e.g. devtools, travel, enterprise-ai
     <project-slug>/
@@ -153,7 +155,7 @@ This **Project catalog** section is the **single registry** for catalog projects
 | Multi-Agent | 32 |
 | Level 5 (production-grade target) | 43 |
 
-**How rows are counted:** Each project has one **primary** row in exactly one domain table. “Workflow / workflow-first” includes systems where a **durable workflow** is the spine (including hybrid **Workflow + Agent** or **Workflow → Agent** designs). “Level 5” counts projects whose brief targets **Level 5** complexity.
+**How rows are counted:** Each project has one **primary** row in exactly one domain table. “Workflow / workflow-first” includes systems where a **durable workflow** is the spine (including hybrid **Workflow + Agent** or **Workflow → Agent** designs). **Agentic UI (AG-UI)** marks blueprints where **CopilotKit-style UI↔agent state** and co-driven workflows are the spine (not a passive chat wrapper). “Level 5” counts projects whose brief targets **Level 5** complexity.
 
 ---
 
@@ -240,6 +242,18 @@ Paths are repository-relative. Each path contains **`README.md`** and **`archite
 |------|-------------|------------|--------------|------|
 | AI In-App Product Copilot | Agent | L4 | Assistance, Context Awareness | [`projects/agentic-ui/ai-in-app-product-copilot`](projects/agentic-ui/ai-in-app-product-copilot) |
 | AI Form Filling Assistant | Agent | L3 | Automation | [`projects/agentic-ui/ai-form-filling-assistant`](projects/agentic-ui/ai-form-filling-assistant) |
+| AI Product Analytics Copilot Dashboard | Agentic UI | L4 | Reasoning, UI interaction, Insights, Streaming | [`projects/agentic-ui/ai-product-analytics-copilot-dashboard`](projects/agentic-ui/ai-product-analytics-copilot-dashboard) |
+| AI Customer Support Copilot Console | Agentic UI | L3 | Retrieval, Suggestions, UI interaction, Streaming | [`projects/agentic-ui/ai-customer-support-copilot-console`](projects/agentic-ui/ai-customer-support-copilot-console) |
+| AI Live Log Debugging Copilot UI | Agentic UI | L4 | Reasoning, Tool usage, Streaming, UI interaction | [`projects/agentic-ui/ai-live-log-debugging-copilot-ui`](projects/agentic-ui/ai-live-log-debugging-copilot-ui) |
+| AI Financial Planning Copilot Dashboard (Interactive) | Agentic UI | L4 | Personalization, Prediction, UI interaction, Streaming | [`projects/agentic-ui/ai-financial-planning-copilot-dashboard`](projects/agentic-ui/ai-financial-planning-copilot-dashboard) |
+| AI Travel Planning Workspace (Interactive Builder) | Agentic UI | L4 | Planning, Personalization, UI interaction, Streaming | [`projects/agentic-ui/ai-travel-planning-workspace-copilot`](projects/agentic-ui/ai-travel-planning-workspace-copilot) |
+| AI Hiring Decision Copilot (Recruiter UI) | Agentic UI | L3 | Matching, Reasoning, UI interaction, Streaming | [`projects/agentic-ui/ai-recruiter-hiring-copilot-ui`](projects/agentic-ui/ai-recruiter-hiring-copilot-ui) |
+| AI Knowledge Workspace (Notion-style with Agent) | Agentic UI | L4 | Retrieval, Memory, UI interaction, Streaming | [`projects/agentic-ui/ai-knowledge-workspace-copilot`](projects/agentic-ui/ai-knowledge-workspace-copilot) |
+| AI E-commerce Merchandising Copilot Dashboard | Agentic UI | L4 | Optimization, Insights, UI interaction, Streaming | [`projects/agentic-ui/ai-merchandising-copilot-dashboard`](projects/agentic-ui/ai-merchandising-copilot-dashboard) |
+| AI Personal Health Insights Dashboard (Personalized) | Agentic UI | L4 | Analysis, Personalization, UI interaction, Streaming | [`projects/agentic-ui/ai-personal-health-insights-copilot-dashboard`](projects/agentic-ui/ai-personal-health-insights-copilot-dashboard) |
+| AI Learning Copilot (Interactive Study UI) | Agentic UI | L3 | Tutoring, Adaptation, UI interaction, Streaming | [`projects/agentic-ui/ai-interactive-study-copilot-ui`](projects/agentic-ui/ai-interactive-study-copilot-ui) |
+
+*Note:* **AI Live Log Debugging Copilot UI** is the **AG-UI + live log stream** blueprint; **[`projects/devtools/ai-debugging-assistant`](projects/devtools/ai-debugging-assistant)** remains the **general code/debug agent** pattern. **AI Travel Planning Workspace** is the **collaborative itinerary board**; **[`projects/travel/ai-travel-planner`](projects/travel/ai-travel-planner)** remains the **multi-agent supplier orchestration** reference—compose them if you want both.
 
 ---
 

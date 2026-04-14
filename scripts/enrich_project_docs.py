@@ -38,6 +38,8 @@ def parse_catalog() -> dict[str, dict[str, str]]:
 
 def classify(stype: str) -> str:
     s = stype.lower()
+    if "agentic ui" in s or "ag-ui" in s:
+        return "agentic-ui"
     if "multi-agent" in s or "multi agent" in s:
         return "multi"
     if "workflow" in s and "agent" not in s:
@@ -95,6 +97,8 @@ def domain_apis(domain: str, caps: str, name: str) -> list[str]:
         add("SendGrid / SES / customer.io for outbound", "Meta / Google Ads APIs (only if ads are in-scope)", "YouTube / podcast hosting APIs when media ingestion applies")
     if domain in ("enterprise", "enterprise-ai", "hr"):
         add("Workday / BambooHR / Greenhouse-style APIs (pick what your org uses)", "Slack / Teams", "Google Drive / SharePoint for doc sources")
+    if domain == "agentic-ui":
+        add("Your product REST/GraphQL (BFF-proxied)", "OIDC / session-bound analytics or CRM endpoints", "Webhooks for async jobs (exports, simulations)")
     if domain in ("iot", "energy-ai", "industrial-ai", "agri-ai"):
         add("MQTT / device telemetry brokers", "Time-series or historian APIs", "Weather or grid data feeds where relevant")
     if domain in ("legal", "legal-ai"):
@@ -137,13 +141,19 @@ def open_source_blocks(kind: str, needs_rag: bool, needs_mcp: bool, copilot: boo
             "- **Temporal or n8n** for the deterministic spine; **OpenAI Agents SDK** or **LangChain.js** for LLM steps inside activities.",
             "- **Vercel AI SDK** if a Next.js surface streams partial results to users.",
         ]
+    elif kind == "agentic-ui":
+        lines += [
+            "- **CopilotKit** — primary AG-UI runtime: shared UI↔agent state, safer action wiring than ad-hoc chat bridges.",
+            "- **Vercel AI SDK** — streaming tokens and structured data parts for side panels and inline chips.",
+            "- **Tailwind + TanStack Query + Zustand** — responsive dashboards/editors with explicit selection/canvas state.",
+        ]
     else:
         lines += [
             "- **OpenAI Agents SDK** — default for tool-first agents with structured outputs and eval hooks.",
             "- **LangChain.js** — when mixing many retrievers, parsers, or non-OpenAI providers behind one agent API.",
             "- **Vercel AI SDK** — when the primary UX is streaming chat / structured streaming in Next.js.",
         ]
-    if copilot:
+    if copilot and kind != "agentic-ui":
         lines.append(
             "- **CopilotKit** — in-app copilot state, shared context with React, safer UI action wiring."
         )
@@ -182,7 +192,7 @@ def build_readme_enrichment(
     kind = classify(stype)
     needs_rag = "rag" in caps.lower() or "retrieval" in caps.lower()
     needs_mcp = "mcp" in caps.lower() or "tool registry" in name.lower() or "registry" in name.lower()
-    copilot = domain == "agentic-ui" or "copilot" in name.lower() or "in-app" in name.lower()
+    copilot = domain == "agentic-ui" or kind == "agentic-ui" or "copilot" in name.lower() or "in-app" in name.lower()
     l5 = is_l5(cx)
 
     apis = domain_apis(domain, caps, name)
@@ -205,6 +215,10 @@ def build_readme_enrichment(
     elif kind == "multi":
         stack.append(
             "- **OpenAI Agents SDK (or LangGraph.js)** — shared state + handoffs map cleanly to multi-specialist designs with traceable spans per agent."
+        )
+    elif kind == "agentic-ui":
+        stack.append(
+            "- **CopilotKit + OpenAI Agents SDK** — UI state and tool calls stay aligned; Vercel AI SDK handles streaming presentation layers."
         )
     else:
         stack.append(
@@ -240,6 +254,10 @@ def build_readme_enrichment(
         default_s = "**Best default:** Node service + OpenAI Agents SDK + Postgres state store + Redis queue for async specialist work + OTel traces — fits handoff-heavy blueprints."
         light_s = "**Lightweight:** Single Node process + in-memory queue for demos; still use Zod schemas and one Postgres schema for trip/issue graph state."
         prod_s = "**Production-heavy:** LangGraph for explicit graph control + dedicated worker pool per agent family + strict RBAC on tools + eval harness in CI."
+    elif kind == "agentic-ui":
+        default_s = "**Best default:** Next.js + CopilotKit + Vercel AI SDK + OpenAI Agents SDK + Postgres + Redis + OTel — the baseline AG-UI stack in this repo."
+        light_s = "**Lightweight:** Vite/React demo + mocked BFF + single Postgres; prove selection→grounded tool loop before hardening."
+        prod_s = "**Production-heavy:** Split BFF and inference workers, online evals for UI mutations, feature flags for risky tools, CRDT/OT where collaborative editing matters."
     else:
         default_s = "**Best default:** Next.js or Hono API + OpenAI Agents SDK + Postgres + Redis + Zod — covers most single-agent and hybrid patterns in this repo."
         light_s = "**Lightweight:** Serverless functions + hosted Redis + single Postgres instance; defer vector DB until retrieval metrics justify it."

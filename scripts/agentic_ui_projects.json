@@ -1,0 +1,1259 @@
+[
+  {
+    "slug": "ai-product-analytics-copilot-dashboard",
+    "title": "AI Product Analytics Copilot Dashboard",
+    "level": "L4",
+    "industry": "Product / Analytics (AG-UI)",
+    "caps": "Reasoning, UI interaction, Insights, Streaming",
+    "overview": "PMs and growth teams steer live charts while a CopilotKit-bound agent explains KPI movement, proposes next diagnostic views, and stays grounded in warehouse facts the user can access.",
+    "problem": "Passive dashboards force users into side-channel chat with screenshots\u2014losing lineage, permissions, and reproducible analysis.",
+    "why": [
+      "Removes slow RCA loops and ungoverned 'export to ChatGPT' habits.",
+      "Fits teams shipping TypeScript analytics products with strict ACLs."
+    ],
+    "ag_model": [
+      "User: hovers KPIs, selects cohorts, toggles compare windows.",
+      "AI: CopilotKit panel + inline chart actions; proposes structured ChartPatch previews, never silent rewrites.",
+      "Decisions: ranked hypotheses with confidence + SQL/metric lineage links.",
+      "Overrides: reject/rollback/pin explanation to Slack with redacted snapshot.",
+      "Trust: show sample sizes, freshness, and allowlisted queries behind every number."
+    ],
+    "stack_examples": [
+      "CopilotKit + Vercel AI SDK for selection-bound streaming.",
+      "Next.js + Tailwind + TanStack Query + Zustand.",
+      "OpenAI Agents SDK with Zod tools: metric catalog, template SQL, Vega-Lite proposals.",
+      "Postgres + pgvector for glossary; Redis for query fingerprints."
+    ],
+    "arch_points": [
+      "Input: auth workspace + SelectionState from client.",
+      "LLM: analyst agent emitting narrative + optional validated chart patches.",
+      "Tools: read-only warehouse via BFF; exports gated.",
+      "Memory: optional embeddings over metric glossary.",
+      "Output: host components apply accepted patches with audit rows."
+    ],
+    "impl": [
+      [
+        "Step 1: Basic version",
+        [
+          "Static charts + Copilot reads canned annotations."
+        ]
+      ],
+      [
+        "Step 2: Add AI layer",
+        [
+          "LLM explains only precomputed stats JSON."
+        ]
+      ],
+      [
+        "Step 3: Add tools",
+        [
+          "Template SQL executor + metric catalog tool."
+        ]
+      ],
+      [
+        "Step 4: Add memory or context",
+        [
+          "pgvector on glossary + saved lenses (RLS)."
+        ]
+      ],
+      [
+        "Step 5: Upgrade to agent or multi-agent (if applicable)",
+        [
+          "Optional LangGraph split: SQL agent vs copy agent."
+        ]
+      ]
+    ],
+    "eval": [
+      "Grounding: answers match golden SQL.",
+      "Latency: hover\u2192first token within budget.",
+      "Safety: tenant isolation tests in CI."
+    ],
+    "fail": [
+      "Hallucinated metrics\u2014template SQL + caps.",
+      "Runaway spend\u2014row limits + cancel."
+    ],
+    "prod": [
+      "RLS in warehouse views; per-seat rate limits; query audit."
+    ],
+    "learn": [
+      "AG-UI contracts for chart state.",
+      "Grounded analytics vs chat-on-CSV."
+    ],
+    "api_lines": [
+      "Snowflake / BigQuery / Databricks (read-only roles)",
+      "dbt or Cube/MetricFlow metadata",
+      "Slack/Teams for sharing explanations"
+    ],
+    "oss_extra": [
+      "LangChain.js (optional multi-retriever)",
+      "Cube or semantic layer toolkits when needed"
+    ],
+    "stack_default": "Next + CopilotKit + Vercel AI SDK + Agents SDK + Postgres + warehouse replica.",
+    "stack_light": "Mock warehouse + local Postgres; skip pgvector until glossary search matters.",
+    "stack_heavy": "Dedicated query workers + online evals + per-tenant cost budgets + semantic layer governance.",
+    "arch_overview": "Next.js dashboard hosts CopilotKit; BFF enforces SQL guardrails; analyst agent calls warehouse through allowlisted templates.",
+    "arch_security": "- RBAC mirrored in UI and tools; audit AI-suggested mutations; rate limits; PII minimization in prompts.\n",
+    "arch": {
+      "diagram": "Browser (Next+CopilotKit)\\n -> BFF (Hono)\\n -> Analytics Agent\\n -> Warehouse + metric catalog",
+      "core": [
+        "UI: charts + CopilotKit provider",
+        "LLM: grounded analyst",
+        "Tools: metric/SQL/chart patch",
+        "Memory: glossary embeddings"
+      ],
+      "dataflow": [
+        "User selects KPI",
+        "Agent runs tools + returns structured explanation/patch",
+        "UI previews; user accepts; audit persists"
+      ],
+      "agent_ix": "Single analyst agent; optional narrator subgraph. CopilotKit mirrors focus + thread.",
+      "scale": [
+        "BFF horizontal",
+        "Read replicas",
+        "Preaggregates"
+      ],
+      "fail": [
+        "Warehouse timeout \u2192 partial narrative flag",
+        "Invalid patch rejected in UI"
+      ],
+      "obs": [
+        "Trace dashboard_id + selection fingerprint",
+        "Log query hashes"
+      ],
+      "sync": [
+        "SelectionState is canonical; server mirrors each turn",
+        "No optimistic numbers without server ack"
+      ]
+    }
+  },
+  {
+    "slug": "ai-customer-support-copilot-console",
+    "title": "AI Customer Support Copilot Console",
+    "level": "L3",
+    "industry": "Support / CRM (AG-UI)",
+    "caps": "Retrieval, Suggestions, UI interaction, Streaming",
+    "overview": "A **support console** where agents work tickets with a CopilotKit surface that drafts replies, pulls KB articles, and shows confidence\u2014always editable before send.",
+    "problem": "Plain CRM + separate chat leads to stale macros, untracked AI text, and weak grounding in ticket + customer history.",
+    "why": [
+      "Cuts handle time while keeping humans accountable.",
+      "Pairs retrieval with the exact ticket context on screen\u2014not a detached bot."
+    ],
+    "ag_model": [
+      "User: triages queues, selects snippets, edits drafts.",
+      "AI: suggestion rail + inline completions with confidence badges and citations to KB chunks.",
+      "Decisions: propose macros with evidence; high-risk intents require explicit click-to-apply.",
+      "Overrides: full manual edit always wins; diff view for AI insertions.",
+      "Trust: show article IDs, retrieval scores, and policy flags (refund eligibility, PII)."
+    ],
+    "stack_examples": [
+      "CopilotKit + Vercel AI SDK in Next.js console.",
+      "OpenAI Agents SDK tools: ticket fetch, KB search, order lookup (read-only by default).",
+      "Postgres for drafts/audit; pgvector for KB; Redis for session.",
+      "Zendesk / Salesforce / Intercom REST via BFF."
+    ],
+    "arch_points": [
+      "Input: ticket id + visible fields + agent selection.",
+      "LLM: grounded reply composer with structured Draft objects.",
+      "Tools: CRM + KB + order search with RBAC.",
+      "Output: editable draft buffer; send only via host button."
+    ],
+    "impl": [
+      [
+        "Step 1: Basic version",
+        [
+          "Render tickets; static macros."
+        ]
+      ],
+      [
+        "Step 2: Add AI layer",
+        [
+          "Suggest replies from templates only."
+        ]
+      ],
+      [
+        "Step 3: Add tools",
+        [
+          "KB + CRM read tools with ACL."
+        ]
+      ],
+      [
+        "Step 4: Add memory or context",
+        [
+          "Embeddings over KB + past approved replies (redacted)."
+        ]
+      ],
+      [
+        "Step 5: Upgrade to agent or multi-agent (if applicable)",
+        [
+          "Optional supervisor for tone vs facts (LangGraph)."
+        ]
+      ]
+    ],
+    "eval": [
+      "Human accept rate of drafts",
+      "KB citation precision",
+      "Time-to-first-suggestion"
+    ],
+    "fail": [
+      "Leaky PII in prompts\u2014redact pipeline",
+      "Bad citations\u2014threshold + fallback"
+    ],
+    "prod": [
+      "Per-agent rate limits",
+      "Audit every send",
+      "SOC2-friendly logging"
+    ],
+    "learn": [
+      "AG-UI for high-stakes text",
+      "Confidence UX patterns"
+    ],
+    "api_lines": [
+      "Zendesk / Salesforce Service Cloud / Intercom APIs",
+      "Internal KB HTTP",
+      "Slack threads for escalation"
+    ],
+    "oss_extra": [
+      "LangChain.js optional for complex retrievers"
+    ],
+    "stack_default": "Next console + CopilotKit + Agents SDK + Postgres/pgvector + CRM APIs via BFF.",
+    "stack_light": "Mock CRM/KB; single Postgres.",
+    "stack_heavy": "Dual approval flows, eval harness on tone+grounding, multi-region BFF.",
+    "arch_overview": "CopilotKit sits inside the CRM console; BFF mediates CRM/KB tools with ticket-scoped tokens.",
+    "arch_security": "- RBAC mirrored in UI and tools; audit AI-suggested mutations; rate limits; PII minimization in prompts.\n",
+    "arch": {
+      "diagram": "Agent UI (Next)\\n -> BFF\\n -> Support Copilot\\n -> CRM + KB",
+      "core": [
+        "UI: ticket workspace + CopilotKit",
+        "LLM: drafting agent",
+        "Tools: CRM/KB"
+      ],
+      "dataflow": [
+        "Select ticket",
+        "Fetch context tools",
+        "Stream draft + citations",
+        "Agent edits then sends via host"
+      ],
+      "agent_ix": "Single drafting agent with guardrailed tools; human remains in the loop for send.",
+      "scale": [
+        "Shard BFF by region",
+        "Cache KB chunks"
+      ],
+      "fail": [
+        "Vendor 429 \u2192 backoff + partial draft",
+        "Low confidence \u2192 ask clarifying prompts"
+      ],
+      "obs": [
+        "Trace ticket_id",
+        "Log draft versions"
+      ],
+      "sync": [
+        "Draft state in Zustand; CopilotKit co-state for thread + selection",
+        "Server stores authoritative ticket snapshot hash"
+      ]
+    }
+  },
+  {
+    "slug": "ai-live-log-debugging-copilot-ui",
+    "title": "AI Live Log Debugging Copilot UI",
+    "level": "L4",
+    "industry": "DevTools (AG-UI)",
+    "caps": "Reasoning, Tool usage, Streaming, UI interaction",
+    "overview": "A **live log viewer** where engineers click lines, correlate traces, and a CopilotKit agent explains errors, proposes fixes, and pulls context from CI and source\u2014without leaving the stream.",
+    "problem": "Terminal dumps and passive log UIs force context switching to chat tools; correlation IDs and stack traces get lost across windows.",
+    "why": [
+      "Speeds incident debugging for TypeScript services.",
+      "Keeps AI actions anchored to the log lines the engineer actually selected."
+    ],
+    "ag_model": [
+      "User: clicks stack frames, filters levels, pins trace ids.",
+      "AI: inline explanations + fix snippets; proposes queries for related deploys.",
+      "Decisions: show confidence + linked commit/build; risky actions open PR draft only.",
+      "Overrides: ignore suggestion; edit proposed command before run.",
+      "Trust: always display raw log line + parser metadata; never hide exceptions."
+    ],
+    "stack_examples": [
+      "WebSocket/SSE log tail into React virtualized list.",
+      "CopilotKit binds selection to agent tools (fetch file, search symbol, CI job).",
+      "OpenAI Agents SDK + GitHub API + CI artifacts.",
+      "Postgres for incident notes; Redis for stream buffers."
+    ],
+    "arch_points": [
+      "Input: tenant project + environment + log filters.",
+      "LLM: debugging copilot with stack-aware tools.",
+      "Tools: read repo, fetch CI logs, symbol search (read-only).",
+      "Output: structured Finding objects rendered beside selection."
+    ],
+    "impl": [
+      [
+        "Step 1: Basic version",
+        [
+          "Static log tail + regex filters."
+        ]
+      ],
+      [
+        "Step 2: Add AI layer",
+        [
+          "Explain selected line with canned playbooks."
+        ]
+      ],
+      [
+        "Step 3: Add tools",
+        [
+          "GitHub + CI fetch tools with PAT server-side."
+        ]
+      ],
+      [
+        "Step 4: Add memory or context",
+        [
+          "Store pinned investigations per service."
+        ]
+      ],
+      [
+        "Step 5: Upgrade to agent or multi-agent (if applicable)",
+        [
+          "Optional separate static-analysis micro-agent."
+        ]
+      ]
+    ],
+    "eval": [
+      "Root-cause accuracy vs labeled incidents",
+      "Time-to-suggested fix",
+      "False positive rate"
+    ],
+    "fail": [
+      "Model invents file paths\u2014validate against repo tree",
+      "Token blowups\u2014truncate with structured summaries"
+    ],
+    "prod": [
+      "PAT rotation",
+      "Per-repo scopes",
+      "Audit tool calls"
+    ],
+    "learn": [
+      "Streaming AG-UI",
+      "Safe developer copilots"
+    ],
+    "api_lines": [
+      "GitHub REST/GraphQL",
+      "Buildkite/GitHub Actions APIs",
+      "OpenTelemetry trace backends"
+    ],
+    "oss_extra": [
+      "LangChain.js optional for multi-source code search"
+    ],
+    "stack_default": "Next + CopilotKit + Agents SDK + WS log ingest + GitHub CI tools.",
+    "stack_light": "Local log file tail + mocked GitHub.",
+    "stack_heavy": "Multi-tenant log ingest + trace correlation workers + evals on suggested patches.",
+    "arch_overview": "Log plane streams into UI; CopilotKit selection drives agent tools against repo + CI systems.",
+    "arch_security": "- RBAC mirrored in UI and tools; audit AI-suggested mutations; rate limits; PII minimization in prompts.\n- Never exfiltrate secrets from logs to the model without scrubbers.\n",
+    "arch": {
+      "diagram": "Log UI\\n -> ingest WS\\n -> Debug Copilot\\n -> GitHub/CI/OTel",
+      "core": [
+        "UI: virtualized logs + CopilotKit",
+        "LLM: debugging agent",
+        "Tools: repo + CI"
+      ],
+      "dataflow": [
+        "Click log line",
+        "Agent gathers frames + files",
+        "Streams explanation + suggested patch PR"
+      ],
+      "agent_ix": "Agent session bound to trace_id + repo revision.",
+      "scale": [
+        "Horizontally partition ingest",
+        "Backpressure on bursty logs"
+      ],
+      "fail": [
+        "Partial traces \u2192 explicit uncertainty",
+        "Vendor outage \u2192 cached symbols only"
+      ],
+      "obs": [
+        "Trace selection + model spans",
+        "Scrubbing metrics"
+      ],
+      "sync": [
+        "Selection carries byte offsets + parsed stack keys",
+        "CopilotKit keeps thread tied to log filter state"
+      ]
+    }
+  },
+  {
+    "slug": "ai-financial-planning-copilot-dashboard",
+    "title": "AI Financial Planning Copilot Dashboard (Interactive)",
+    "level": "L4",
+    "industry": "Fintech (AG-UI)",
+    "caps": "Personalization, Prediction, UI interaction, Streaming",
+    "overview": "An interactive **household finance** workspace where sliders and goals co-drive a CopilotKit agent that recomputes scenarios, surfaces risks, and narrates tradeoffs with transparent assumptions.",
+    "problem": "Static spreadsheets and chat-only bots either lack interactivity or lack grounding in the user's real cashflow categories.",
+    "why": [
+      "Helps users stress-test plans without exporting sensitive data.",
+      "Demonstrates AG-UI for regulated-adjacent consumer finance UX."
+    ],
+    "ag_model": [
+      "User: moves sliders for savings rate, rent, debt payoff; toggles goals.",
+      "AI: live scenario cards + warnings; proposes adjustments with visible formulas.",
+      "Decisions: show confidence bands from Monte Carlo-lite sims run server-side.",
+      "Overrides: user pins constraints AI cannot relax without confirmation.",
+      "Trust: show assumptions, data sources, and 'not advice' disclaimers where required."
+    ],
+    "stack_examples": [
+      "Next + Tailwind charts + CopilotKit for co-scenarios.",
+      "Agents SDK tools: recompute ledger, fetch transactions (aggregated), run stress sim.",
+      "Plaid (sandbox) or CSV import adapters.",
+      "Postgres for user ledger; Redis for fast what-if cache."
+    ],
+    "arch_points": [
+      "Input: aggregated category totals (minimize raw txn exposure).",
+      "LLM: planning copilot emitting ScenarioCard JSON.",
+      "Tools: deterministic finance kernels + aggregation queries.",
+      "Output: UI applies cards after validation; PDF export optional."
+    ],
+    "impl": [
+      [
+        "Step 1: Basic version",
+        [
+          "Manual sliders + local calc without AI."
+        ]
+      ],
+      [
+        "Step 2: Add AI layer",
+        [
+          "Narrate fixed scenarios."
+        ]
+      ],
+      [
+        "Step 3: Add tools",
+        [
+          "Plaid/CSV ingest with consent flows."
+        ]
+      ],
+      [
+        "Step 4: Add memory or context",
+        [
+          "Store goals + baseline snapshots."
+        ]
+      ],
+      [
+        "Step 5: Upgrade to agent or multi-agent (if applicable)",
+        [
+          "Optional risk agent for compliance copy."
+        ]
+      ]
+    ],
+    "eval": [
+      "Scenario parity vs spreadsheet goldens",
+      "Latency of slider\u2192recompute",
+      "User trust scores"
+    ],
+    "fail": [
+      "Overfitting sparse data\u2014show ranges",
+      "Model gives tax/legal advice\u2014block with policy"
+    ],
+    "prod": [
+      "Consent logs",
+      "Data minimization",
+      "Encryption at rest"
+    ],
+    "learn": [
+      "AG-UI for simulations",
+      "Grounded personal finance UX"
+    ],
+    "api_lines": [
+      "Plaid (transactions/balances where permitted)",
+      "Stripe Billing if subscriptions matter",
+      "Open banking APIs region-specific"
+    ],
+    "oss_extra": [
+      "Zod scenario schemas",
+      "Temporal optional for scheduled recompute jobs"
+    ],
+    "stack_default": "Next + CopilotKit + Agents SDK + Postgres + Plaid sandbox + deterministic sim service.",
+    "stack_light": "CSV-only import + mocked Plaid.",
+    "stack_heavy": "Dedicated analytics workers + compliance review queues + eval harness for advice tone.",
+    "arch_overview": "UI sliders emit ScenarioParams; BFF runs deterministic kernels; agent narrates and proposes constrained tweaks.",
+    "arch_security": "- RBAC mirrored in UI and tools; audit AI-suggested mutations; rate limits; PII minimization in prompts.\n- Treat balances as sensitive; never send full account numbers to the model; use aggregate tools.\n",
+    "arch": {
+      "diagram": "Planner UI\\n -> BFF sim kernels\\n -> Finance Copilot\\n -> Plaid/ledger DB",
+      "core": [
+        "UI: CopilotKit + charts",
+        "LLM: narrator/planner",
+        "Tools: sim + ingest"
+      ],
+      "dataflow": [
+        "Slider change debounced",
+        "Server recomputes",
+        "Agent streams explanation + optional tweak cards",
+        "User accepts"
+      ],
+      "agent_ix": "CopilotKit binds ScenarioParams; agent cannot mutate numbers without tool outputs.",
+      "scale": [
+        "Worker pool for Monte Carlo batches",
+        "Cache scenarios by param hash"
+      ],
+      "fail": [
+        "Stale bank data \u2192 banner",
+        "Conflicting goals \u2192 ask user"
+      ],
+      "obs": [
+        "Track recompute cost",
+        "Model refusal reasons"
+      ],
+      "sync": [
+        "Zustand for slider state; server authoritative on money numbers",
+        "Optimistic text only, not balances"
+      ]
+    }
+  },
+  {
+    "slug": "ai-travel-planning-workspace-copilot",
+    "title": "AI Travel Planning Workspace (Interactive Builder)",
+    "level": "L4",
+    "industry": "Travel (AG-UI workspace)",
+    "caps": "Planning, Personalization, UI interaction, Streaming",
+    "overview": "A **visual itinerary board** where travelers drag stops, adjust days, and a CopilotKit agent proposes improvements, explains tradeoffs, and syncs changes live\u2014distinct from backend multi-agent supplier orchestration.",
+    "problem": "Chat-only trip bots lose spatial/temporal structure; users cannot co-edit an itinerary like a real planning surface.",
+    "why": [
+      "Pairs human spatial reasoning with grounded suggestions.",
+      "Shows AG-UI for collaborative planning without replacing supplier integrations."
+    ],
+    "ag_model": [
+      "User: drag blocks, set pace, pin must-see anchors.",
+      "AI: contextual rail suggesting reorder, day-budget warnings, weather overlays.",
+      "Decisions: preview patches to the itinerary graph; accept applies versioned diff.",
+      "Overrides: manual drag always wins; AI cannot book without explicit tool + consent.",
+      "Trust: show freshness for prices when tools are wired; label simulated data in MVP."
+    ],
+    "stack_examples": [
+      "React flow/canvas + CopilotKit co-editing.",
+      "Vercel AI SDK streaming for suggestions.",
+      "Agents SDK tools: maps routing, optional supplier adapters.",
+      "Postgres for itinerary graph versions; Redis for presence."
+    ],
+    "arch_points": [
+      "Input: itinerary graph JSON + user prefs.",
+      "LLM: planning copilot emitting graph ops (Zod).",
+      "Tools: maps + optional flight/hotel search adapters.",
+      "Output: host validates DAG constraints before commit."
+    ],
+    "impl": [
+      [
+        "Step 1: Basic version",
+        [
+          "Local-only itinerary board."
+        ]
+      ],
+      [
+        "Step 2: Add AI layer",
+        [
+          "Suggest text summaries of static plans."
+        ]
+      ],
+      [
+        "Step 3: Add tools",
+        [
+          "Maps distances first; stub suppliers."
+        ]
+      ],
+      [
+        "Step 4: Add memory or context",
+        [
+          "Save versions per user trip."
+        ]
+      ],
+      [
+        "Step 5: Upgrade to agent or multi-agent (if applicable)",
+        [
+          "Delegate supplier calls to separate service if paired with travel planner agent system."
+        ]
+      ]
+    ],
+    "eval": [
+      "Constraint violations per edit",
+      "User satisfaction on reorder suggestions",
+      "Latency of drag\u2192suggestion"
+    ],
+    "fail": [
+      "Invalid graph cycles\u2014server validation",
+      "Hallucinated POI hours\u2014require tool payload"
+    ],
+    "prod": [
+      "Versioning + audit of AI edits",
+      "Rate limits on map calls"
+    ],
+    "learn": [
+      "Co-editing AG-UI",
+      "Graph ops as agent outputs"
+    ],
+    "api_lines": [
+      "Google Routes/Places or Mapbox",
+      "Optional Duffel/Amadeus when licensed",
+      "Weather APIs"
+    ],
+    "oss_extra": [
+      "React Flow / custom canvas libraries",
+      "LangGraph optional for supplier subgraph"
+    ],
+    "stack_default": "Next + CopilotKit + Agents SDK + Postgres itinerary store + maps tools.",
+    "stack_light": "Mock maps + local graph only.",
+    "stack_heavy": "Pair with dedicated orchestration service + OTel across UI and agents.",
+    "arch_overview": "Canvas workspace emits graph events; CopilotKit agent proposes validated ops; optional remote orchestrator for inventory-backed pricing.",
+    "arch_security": "- RBAC mirrored in UI and tools; audit AI-suggested mutations; rate limits; PII minimization in prompts.\n- This blueprint is the **workspace shell**; pair with [`projects/travel/ai-travel-planner`](projects/travel/ai-travel-planner) if you want the multi-agent supplier orchestration brain.\n",
+    "arch": {
+      "diagram": "Canvas UI\\n -> Workspace Copilot\\n -> Maps/tools\\n -> (optional) travel orchestration service",
+      "core": [
+        "UI: board + CopilotKit",
+        "LLM: planning copilot",
+        "Tools: maps/suppliers"
+      ],
+      "dataflow": [
+        "Drag node",
+        "Client sends op intent",
+        "Agent proposes patch",
+        "Validator ensures feasibility",
+        "Commit version"
+      ],
+      "agent_ix": "Session tied to trip_id; merges serialized through validator queue.",
+      "scale": [
+        "Presence per trip",
+        "Partition long trips"
+      ],
+      "fail": [
+        "Conflicting constraints \u2192 user choice modal",
+        "Tool timeout \u2192 partial suggestions"
+      ],
+      "obs": [
+        "Trace trip_id + graph version",
+        "Metrics on rejected ops"
+      ],
+      "sync": [
+        "Operational transform or locked single-writer for graph mutations",
+        "CopilotKit mirrors selection + panel state"
+      ]
+    }
+  },
+  {
+    "slug": "ai-recruiter-hiring-copilot-ui",
+    "title": "AI Hiring Decision Copilot (Recruiter UI)",
+    "level": "L3",
+    "industry": "HR (AG-UI)",
+    "caps": "Matching, Reasoning, UI interaction, Streaming",
+    "overview": "A **recruiter console** with side-by-side candidates, AI annotations, interview kits, and bias warnings\u2014distinct from a generic hiring chatbot.",
+    "problem": "Recruiters juggle ATS tabs and unstructured notes; generic ranking lists lack transparent evidence tied to resumes and reqs.",
+    "why": [
+      "Improves structured decisions while keeping humans accountable.",
+      "Demonstrates AG-UI for sensitive HR workflows."
+    ],
+    "ag_model": [
+      "User: selects two candidates, highlights skills on resume PDFs.",
+      "AI: side panel with scored dimensions + citations to resume lines + risk flags.",
+      "Decisions: suggested interview questions reference req IDs; cannot auto-reject.",
+      "Overrides: recruiter edits scorecard; dismiss AI note with reason.",
+      "Trust: show detector outputs as advisory; log overrides for compliance."
+    ],
+    "stack_examples": [
+      "Next + CopilotKit for dual-pane compare.",
+      "Agents SDK tools: ATS fetch, resume parse, policy KB.",
+      "Postgres for scorecards; object storage for PDFs."
+    ],
+    "arch_points": [
+      "Input: job_id + candidate_ids + visible resume snippets.",
+      "LLM: structured comparative analysis with citations.",
+      "Tools: ATS + parser; bias heuristics as separate deterministic checks when possible.",
+      "Output: UI renders annotations; no auto-stage changes."
+    ],
+    "impl": [
+      [
+        "Step 1: Basic version",
+        [
+          "ATS list + manual notes."
+        ]
+      ],
+      [
+        "Step 2: Add AI layer",
+        [
+          "Summaries per candidate."
+        ]
+      ],
+      [
+        "Step 3: Add tools",
+        [
+          "Resume text extraction with ACL."
+        ]
+      ],
+      [
+        "Step 4: Add memory or context",
+        [
+          "Store recruiter preferences per role."
+        ]
+      ],
+      [
+        "Step 5: Upgrade to agent or multi-agent (if applicable)",
+        [
+          "Optional policy agent for compliance copy."
+        ]
+      ]
+    ],
+    "eval": [
+      "Citation precision",
+      "Bias flag precision vs human review",
+      "Time-to-interview-kit"
+    ],
+    "fail": [
+      "Unsupported claims\u2014require spans",
+      "PII leakage\u2014redact contacts"
+    ],
+    "prod": [
+      "Legal retention windows",
+      "Access logs",
+      "Regional privacy toggles"
+    ],
+    "learn": [
+      "Evidence-first AG-UI",
+      "Responsible hiring UX"
+    ],
+    "api_lines": [
+      "Greenhouse / Lever / Workable APIs (pick one)",
+      "Doc AI/OCR for resumes",
+      "eSignature only if offers in-scope"
+    ],
+    "oss_extra": [
+      "LangChain.js optional for multi-doc packs"
+    ],
+    "stack_default": "Next + CopilotKit + Agents SDK + Postgres + ATS integration.",
+    "stack_light": "CSV candidates + mocked ATS.",
+    "stack_heavy": "Dual-control approvals + evals on fairness metrics + enterprise SSO.",
+    "arch_overview": "Comparison UI drives agent tools; structured annotations return to ATS as drafts only after human commit.",
+    "arch_security": "- RBAC mirrored in UI and tools; audit AI-suggested mutations; rate limits; PII minimization in prompts.\n- Strict separation of candidate PII across tenants.\n",
+    "arch": {
+      "diagram": "Recruiter UI\\n -> BFF\\n -> Hiring Copilot\\n -> ATS + resume store",
+      "core": [
+        "UI: compare panes + CopilotKit",
+        "LLM: evidence-linked analyst",
+        "Tools: ATS/parser"
+      ],
+      "dataflow": [
+        "Select candidates",
+        "Fetch docs",
+        "Stream comparative notes",
+        "Recruiter accepts snippets into scorecard"
+      ],
+      "agent_ix": "Agent outputs structured Annotation[]; host maps to UI overlays.",
+      "scale": [
+        "Async resume parsing workers",
+        "Cache extracted text"
+      ],
+      "fail": [
+        "Parser low confidence \u2192 ask human",
+        "ATS rate limit \u2192 backoff"
+      ],
+      "obs": [
+        "Trace job_id",
+        "Log override reasons"
+      ],
+      "sync": [
+        "Selected lines sent as structured spans",
+        "CopilotKit keeps compare state"
+      ]
+    }
+  },
+  {
+    "slug": "ai-knowledge-workspace-copilot",
+    "title": "AI Knowledge Workspace (Notion-style with Agent)",
+    "level": "L4",
+    "industry": "Productivity / Knowledge (AG-UI)",
+    "caps": "Retrieval, Memory, UI interaction, Streaming",
+    "overview": "A **doc workspace** with blocks, backlinks, and a CopilotKit agent that summarizes, proposes new sections, and surfaces a knowledge graph view\u2014without turning the editor into a passive chat window.",
+    "problem": "Separate chat tools lose block-level context; users cannot apply AI suggestions as structured edits.",
+    "why": [
+      "Keeps knowledge work inside the editor with diffs.",
+      "Great AG-UI reference for block editors + retrieval."
+    ],
+    "ag_model": [
+      "User: selects blocks, toggles graph lens, accepts inline suggestions.",
+      "AI: sidebar + inline ghost text for new sections; proposes links between pages with preview.",
+      "Decisions: patch objects insert as tracked suggestions, not silent writes.",
+      "Overrides: reject per hunk; revert stack like git.",
+      "Trust: show retrieval sources and similarity scores for auto-links."
+    ],
+    "stack_examples": [
+      "Block editor (TipTap/Slate) + CopilotKit.",
+      "pgvector for embeddings; Postgres for graph edges.",
+      "Agents SDK tools: search pages, insert block patch, fetch backlinks."
+    ],
+    "arch_points": [
+      "Input: page_id + block selection + schema version.",
+      "LLM: editor copilot emitting BlockPatch[] validated server-side.",
+      "Tools: search + link graph queries.",
+      "Output: UI diff preview then commit."
+    ],
+    "impl": [
+      [
+        "Step 1: Basic version",
+        [
+          "Markdown editor + manual save."
+        ]
+      ],
+      [
+        "Step 2: Add AI layer",
+        [
+          "Summarize selection only."
+        ]
+      ],
+      [
+        "Step 3: Add tools",
+        [
+          "Search workspace pages."
+        ]
+      ],
+      [
+        "Step 4: Add memory or context",
+        [
+          "Embeddings per page chunk with ACL."
+        ]
+      ],
+      [
+        "Step 5: Upgrade to agent or multi-agent (if applicable)",
+        [
+          "Optional sub-agent for graph layout suggestions."
+        ]
+      ]
+    ],
+    "eval": [
+      "Patch validity rate",
+      "Retrieval precision@k",
+      "Edit acceptance"
+    ],
+    "fail": [
+      "Conflicting edits\u2014OT/locking",
+      "Hallucinated links\u2014threshold"
+    ],
+    "prod": [
+      "Version history",
+      "Share permissions",
+      "Export controls"
+    ],
+    "learn": [
+      "Block-level AG-UI",
+      "Graph + editor integration"
+    ],
+    "api_lines": [
+      "Optional Google Drive/Notion import connectors",
+      "OIDC for workspace auth"
+    ],
+    "oss_extra": [
+      "TipTap or Slate",
+      "LangChain.js optional for hybrid retrievers"
+    ],
+    "stack_default": "Next + CopilotKit + Agents SDK + Postgres/pgvector + block editor.",
+    "stack_light": "Single-user local workspace.",
+    "stack_heavy": "Realtime collaboration + CRDT + OTel + eval harness for patch safety.",
+    "arch_overview": "Editor selection streams to agent; patches validated; graph view queries same ACL-aware index.",
+    "arch_security": "- RBAC mirrored in UI and tools; audit AI-suggested mutations; rate limits; PII minimization in prompts.\n",
+    "arch": {
+      "diagram": "Editor (blocks)\\n -> Workspace Copilot\\n -> Search/graph\\n -> Postgres",
+      "core": [
+        "UI: editor + CopilotKit",
+        "LLM: patch proposer",
+        "Tools: search/graph"
+      ],
+      "dataflow": [
+        "Select blocks",
+        "Agent proposes patches",
+        "Diff preview",
+        "Commit version"
+      ],
+      "agent_ix": "CopilotKit binds selection + scroll anchors; agent constrained to patch grammar.",
+      "scale": [
+        "Chunk indexing workers",
+        "Read replicas for search"
+      ],
+      "fail": [
+        "Large page truncation with continuation tokens",
+        "Merge conflicts surfaced"
+      ],
+      "obs": [
+        "Trace page_id + patch ids",
+        "Index freshness metrics"
+      ],
+      "sync": [
+        "Operational transform or CRDT for concurrent edits",
+        "Agent reads serialized snapshot hash"
+      ]
+    }
+  },
+  {
+    "slug": "ai-merchandising-copilot-dashboard",
+    "title": "AI E-commerce Merchandising Copilot Dashboard",
+    "level": "L4",
+    "industry": "E-commerce (AG-UI)",
+    "caps": "Optimization, Insights, UI interaction, Streaming",
+    "overview": "Merchants drag products on a **virtual shelf**, tune pricing sliders, and a CopilotKit agent forecasts margin impact, highlights trends, and proposes bundles\u2014grounded in catalog + sales feeds.",
+    "problem": "Merch teams bounce between BI tools and spreadsheets; passive dashboards cannot react to drags and drops in the planning canvas.",
+    "why": [
+      "Speeds seasonal layout + pricing experiments.",
+      "Shows AG-UI for operations-heavy commerce surfaces."
+    ],
+    "ag_model": [
+      "User: drags SKUs, sets promos, adjusts price bands.",
+      "AI: overlays demand elasticity hints (when data exists) and proposes bundles with expected AOV lift.",
+      "Decisions: preview cards with confidence + historical window used.",
+      "Overrides: merchant rejects bundle; AI learns constraint for session.",
+      "Trust: show data windows, outliers removed, and simulation assumptions."
+    ],
+    "stack_examples": [
+      "Next + CopilotKit + canvas/shelf UI.",
+      "Agents SDK tools: fetch sales series, inventory, recommend placement heuristics.",
+      "Shopify/Commerce APIs in BFF."
+    ],
+    "arch_points": [
+      "Input: catalog slice + drag-drop state.",
+      "LLM: merchandising copilot emitting ShelfPatch JSON.",
+      "Tools: sales aggregates + inventory checks.",
+      "Output: validated UI mutations + audit."
+    ],
+    "impl": [
+      [
+        "Step 1: Basic version",
+        [
+          "Static shelf from catalog."
+        ]
+      ],
+      [
+        "Step 2: Add AI layer",
+        [
+          "Text tips per SKU without tools."
+        ]
+      ],
+      [
+        "Step 3: Add tools",
+        [
+          "Sales + inventory reads."
+        ]
+      ],
+      [
+        "Step 4: Add memory or context",
+        [
+          "Store successful layouts as templates."
+        ]
+      ],
+      [
+        "Step 5: Upgrade to agent or multi-agent (if applicable)",
+        [
+          "Optional pricing risk agent."
+        ]
+      ]
+    ],
+    "eval": [
+      "Simulation error vs holdout",
+      "Merchant acceptance rate",
+      "Latency drag\u2192insight"
+    ],
+    "fail": [
+      "Stale inventory\u2014surface recency",
+      "Overconfident elasticity\u2014show ranges"
+    ],
+    "prod": [
+      "Role-based publish gates",
+      "Audit pricing suggestions"
+    ],
+    "learn": [
+      "Operations AG-UI",
+      "Grounded retail analytics"
+    ],
+    "api_lines": [
+      "Shopify Admin API / custom OMS",
+      "Stripe if checkout experiments",
+      "Ads/marketing optional"
+    ],
+    "oss_extra": [
+      "Recharts/visx",
+      "Zod for ShelfPatch"
+    ],
+    "stack_default": "Next + CopilotKit + Agents SDK + Postgres + commerce APIs.",
+    "stack_light": "CSV sales + mocked catalog.",
+    "stack_heavy": "Streaming sales ingest + experiment framework + evals on revenue guardrails.",
+    "arch_overview": "Shelf UI events feed agent; deterministic sim kernel computes KPI deltas; agent narrates.",
+    "arch_security": "- RBAC mirrored in UI and tools; audit AI-suggested mutations; rate limits; PII minimization in prompts.\n",
+    "arch": {
+      "diagram": "Merch UI\\n -> BFF\\n -> Merch Copilot\\n -> Commerce + sales warehouse",
+      "core": [
+        "UI: shelf + CopilotKit",
+        "LLM: planner",
+        "Tools: catalog/sales"
+      ],
+      "dataflow": [
+        "Drag SKU",
+        "Compute deltas",
+        "Stream suggestion cards",
+        "Publish after approval"
+      ],
+      "agent_ix": "Session scoped to store_id; tools read-only until publish action.",
+      "scale": [
+        "Preaggregate sales",
+        "Partition by store"
+      ],
+      "fail": [
+        "Inventory conflicts \u2192 blocking modal",
+        "API 429 \u2192 graceful degrade"
+      ],
+      "obs": [
+        "Trace store_id",
+        "Track suggestion uptake"
+      ],
+      "sync": [
+        "Shelf state optimistic with server reconciliation for placements",
+        "Price numbers never optimistic without server"
+      ]
+    }
+  },
+  {
+    "slug": "ai-personal-health-insights-copilot-dashboard",
+    "title": "AI Personal Health Insights Dashboard (Personalized)",
+    "level": "L4",
+    "industry": "Health / Wellness (AG-UI)",
+    "caps": "Analysis, Personalization, UI interaction, Streaming",
+    "overview": "A **consumer wellness** dashboard (non-clinical by default) where wearable and habit data meet CopilotKit: users explore charts, and the agent explains patterns, suggests habits, and flags when to seek professionals.",
+    "problem": "Wellness apps either spam notifications or hide reasoning; users lack interactive, explainable coaching tied to their charts.",
+    "why": [
+      "Demonstrates compassionate AG-UI without replacing clinicians.",
+      "Great pattern for consent-heavy personal metrics."
+    ],
+    "ag_model": [
+      "User: selects metrics, toggles goals, marks symptoms (non-diagnostic).",
+      "AI: contextual insights with ranges + lifestyle suggestions; escalates disclaimers.",
+      "Decisions: never auto-changes medical settings; proposals are cards.",
+      "Overrides: user dismisses insight; feedback stored locally/session.",
+      "Trust: confidence + cohort comparisons where ethical; clear non-diagnostic copy."
+    ],
+    "stack_examples": [
+      "Next + CopilotKit + chart interactions.",
+      "Apple HealthKit / Google Fit APIs via on-device or BFF bridges (platform dependent).",
+      "Postgres for aggregates; encrypt sensitive fields."
+    ],
+    "arch_points": [
+      "Input: aggregated metrics + user goals.",
+      "LLM: wellness coach with strict policy prompts + tool use for summaries.",
+      "Tools: statistical helpers over stored aggregates.",
+      "Output: insight cards with citations to user data windows."
+    ],
+    "impl": [
+      [
+        "Step 1: Basic version",
+        [
+          "Static charts from CSV export."
+        ]
+      ],
+      [
+        "Step 2: Add AI layer",
+        [
+          "Template insights."
+        ]
+      ],
+      [
+        "Step 3: Add tools",
+        [
+          "Integrate one wearable provider sandbox."
+        ]
+      ],
+      [
+        "Step 4: Add memory or context",
+        [
+          "Store user goals + dismissed insights."
+        ]
+      ],
+      [
+        "Step 5: Upgrade to agent or multi-agent (if applicable)",
+        [
+          "Optional escalation triage agent for care navigation (policy-bound)."
+        ]
+      ]
+    ],
+    "eval": [
+      "User-reported helpfulness",
+      "Safety: refusal tests on diagnostic asks",
+      "Latency"
+    ],
+    "fail": [
+      "Diagnostic drift\u2014hard refusal templates",
+      "Data gaps\u2014explicit uncertainty"
+    ],
+    "prod": [
+      "Consent management",
+      "Encryption",
+      "Regional compliance toggles"
+    ],
+    "learn": [
+      "Consent-first AG-UI",
+      "Explainable wellness UX"
+    ],
+    "api_lines": [
+      "HealthKit / Google Fit (as permitted)",
+      "Optional FHIR sandboxes only if you expand to clinical pilots"
+    ],
+    "oss_extra": [
+      "Zod for metric windows",
+      "Temporal for nightly aggregation jobs"
+    ],
+    "stack_default": "Next + CopilotKit + Agents SDK + Postgres + wearable integrations via BFF.",
+    "stack_light": "CSV-only metrics.",
+    "stack_heavy": "HIPAA/BAA path as separate deployment mode with hardened controls.",
+    "arch_overview": "Charts emit MetricSelection; agent pulls aggregates via tools; strict policy layer for medical boundaries.",
+    "arch_security": "- RBAC mirrored in UI and tools; audit AI-suggested mutations; rate limits; PII minimization in prompts.\n- Wellness UX only unless you integrate licensed clinical workflows; avoid diagnostic claims.\n",
+    "arch": {
+      "diagram": "Wellness UI\\n -> BFF\\n -> Wellness Copilot\\n -> Metrics store",
+      "core": [
+        "UI: charts + CopilotKit",
+        "LLM: coach",
+        "Tools: stats/aggregates"
+      ],
+      "dataflow": [
+        "Select metric window",
+        "Agent summarizes with tools",
+        "Cards rendered with disclaimers"
+      ],
+      "agent_ix": "CopilotKit binds goals + selections; policy guard intercepts clinical asks.",
+      "scale": [
+        "Nightly rollups",
+        "Per-user encryption keys optional"
+      ],
+      "fail": [
+        "Sparse data \u2192 wider intervals",
+        "Provider outage \u2192 cached aggregates"
+      ],
+      "obs": [
+        "Trace user_id hashed",
+        "Safety filter metrics"
+      ],
+      "sync": [
+        "Local-first option for sensitive reads",
+        "Server stores aggregates not raw streams when possible"
+      ]
+    }
+  },
+  {
+    "slug": "ai-interactive-study-copilot-ui",
+    "title": "AI Learning Copilot (Interactive Study UI)",
+    "level": "L3",
+    "industry": "Education (AG-UI)",
+    "caps": "Tutoring, Adaptation, UI interaction, Streaming",
+    "overview": "An **interactive study surface** where learners select text, run quick quizzes generated in-place, and CopilotKit keeps difficulty adaptive\u2014distinct from a passive tutoring chat.",
+    "problem": "Chat tutors ignore page structure; students cannot anchor questions to specific lesson blocks or get immediate inline checks.",
+    "why": [
+      "Improves retention with micro-interactions.",
+      "Shows AG-UI for structured pedagogy."
+    ],
+    "ag_model": [
+      "User: highlights passage, requests quiz, marks confidence per item.",
+      "AI: inline questions + explanations tied to selection spans; adjusts next item difficulty.",
+      "Decisions: show rationale after attempt; learner can challenge with follow-up.",
+      "Overrides: skip topic; teacher locks curriculum sections.",
+      "Trust: cite lesson source ids; show coverage map of syllabus."
+    ],
+    "stack_examples": [
+      "Next + CopilotKit + lesson renderer (MDX/blocks).",
+      "Agents SDK tools: fetch lesson chunk, generate items with schema, log mastery.",
+      "Postgres for mastery model."
+    ],
+    "arch_points": [
+      "Input: course_id + selection span ids.",
+      "LLM: tutor agent emitting QuestionItem[] validated.",
+      "Tools: lesson repository + analytics.",
+      "Output: inline UI components from structured items."
+    ],
+    "impl": [
+      [
+        "Step 1: Basic version",
+        [
+          "Static lessons + manual quiz."
+        ]
+      ],
+      [
+        "Step 2: Add AI layer",
+        [
+          "One-off questions from selection."
+        ]
+      ],
+      [
+        "Step 3: Add tools",
+        [
+          "Lesson chunk fetch."
+        ]
+      ],
+      [
+        "Step 4: Add memory or context",
+        [
+          "Track mastery per skill tag."
+        ]
+      ],
+      [
+        "Step 5: Upgrade to agent or multi-agent (if applicable)",
+        [
+          "Optional coach vs assessor split via LangGraph."
+        ]
+      ]
+    ],
+    "eval": [
+      "Item validity vs teacher rubric",
+      "Learning gains on holdout sets",
+      "Engagement time"
+    ],
+    "fail": [
+      "Off-syllabus content\u2014validator",
+      "Too-hard cascades\u2014bandit policy"
+    ],
+    "prod": [
+      "FERPA-aware logging",
+      "Teacher dashboards",
+      "Content moderation"
+    ],
+    "learn": [
+      "Pedagogical AG-UI",
+      "Structured assessment generation"
+    ],
+    "api_lines": [
+      "LMS APIs if embedded (Canvas/Google Classroom) optional",
+      "OIDC for schools"
+    ],
+    "oss_extra": [
+      "MDX content pipelines",
+      "LangChain.js optional for RAG over course packs"
+    ],
+    "stack_default": "Next + CopilotKit + Agents SDK + Postgres mastery store.",
+    "stack_light": "Single course JSON + mocked LMS.",
+    "stack_heavy": "Multi-tenant schools + eval harness for question quality + moderation queue.",
+    "arch_overview": "Lesson selection streams to tutor agent; questions render as structured components; mastery updated via tools.",
+    "arch_security": "- RBAC mirrored in UI and tools; audit AI-suggested mutations; rate limits; PII minimization in prompts.\n- Minimize student PII in prompts; parental controls where required.\n",
+    "arch": {
+      "diagram": "Lesson UI\\n -> BFF\\n -> Study Copilot\\n -> Content + mastery DB",
+      "core": [
+        "UI: lesson + CopilotKit",
+        "LLM: tutor",
+        "Tools: content/mastery"
+      ],
+      "dataflow": [
+        "Highlight text",
+        "Agent generates items",
+        "Learner answers",
+        "Mastery tool updates",
+        "Explain"
+      ],
+      "agent_ix": "CopilotKit binds selection + quiz panel; difficulty policy server-side.",
+      "scale": [
+        "Warm cache for popular lessons",
+        "Async generation for large classes"
+      ],
+      "fail": [
+        "Generation timeout \u2192 fallback items bank",
+        "Policy violation \u2192 block"
+      ],
+      "obs": [
+        "Trace lesson_id",
+        "Item difficulty drift metrics"
+      ],
+      "sync": [
+        "Quiz state in Zustand; server authoritative for grading",
+        "Optimistic UI only for non-graded hints"
+      ]
+    }
+  }
+]
