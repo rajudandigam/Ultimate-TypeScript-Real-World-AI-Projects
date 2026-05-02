@@ -1,18 +1,13 @@
 /**
- * @repo/core — shared runtime primitives (minimal stubs).
- * Expand with typed envelopes, run state, retry policies, and tool boundaries.
+ * @repo/core — shared runtime primitives for workflows, tools, resilience, and tracing hooks.
  */
 
-export type CorrelationId = string;
-
-type GlobalWithOptionalCrypto = typeof globalThis & {
-  crypto?: { randomUUID?: () => string };
-};
-
-/** Create a correlation id for tracing a single request / run across services. */
-export function createCorrelationId(): CorrelationId {
-  const g = globalThis as GlobalWithOptionalCrypto;
-  const uuid = g.crypto?.randomUUID?.();
-  if (uuid) return uuid;
-  return `corr-${Date.now()}-${Math.random().toString(16).slice(2)}`;
-}
+export * from "./types.js";
+export * from "./tool.js";
+export * from "./workflow.js";
+export * from "./agent-message.js";
+export * from "./run-state.js";
+export * from "./retry.js";
+export * from "./circuit-breaker.js";
+export * from "./structured-logger.js";
+export * from "./otel.js";

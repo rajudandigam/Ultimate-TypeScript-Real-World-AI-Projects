@@ -2,12 +2,16 @@
 
 Reusable **runtime primitives** for workflows, agents, multi-agent orchestration, tools, retries, durable run state, and typed messages.
 
-**Status:** scaffold only — APIs will grow alongside `reference-implementations/` flagships.
+**Status:** first practical slice — types, tools (Zod-shaped), sequential workflows, agent message shapes, in-memory run state, retry/backoff, circuit breaker, JSON logging, and OTel-shaped tracing hooks.
 
 ## Scripts
 
 - `pnpm typecheck` — `tsc --noEmit` (strict)
 - `pnpm test` — `vitest run`
+
+## Dependencies
+
+- **zod** — `ToolDefinition` / `ToolInput` / `ToolOutput` use `z.ZodTypeAny` and `z.infer` for schema-safe typing.
 
 ## Non-goals
 
