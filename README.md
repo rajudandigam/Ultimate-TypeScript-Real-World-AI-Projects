@@ -149,9 +149,10 @@ This **Project catalog** section is the **single registry** for catalog projects
 
 | Category | Count |
 |---------|------:|
-| Total Projects | 253 |
+| Total Projects | 263 |
 | Workflow / workflow-first | 77 |
 | Agent | 144 |
+| Agentic UI (AG-UI) | 10 |
 | Multi-Agent | 32 |
 | Level 5 (production-grade target) | 43 |
 
