@@ -1,0 +1,4 @@
+# Keep this README (and .gitignore) tracked; ignore generated harness output.
+*
+!README.md
+!.gitignore

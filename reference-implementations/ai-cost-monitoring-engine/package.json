@@ -4,6 +4,38 @@
   "private": true,
   "type": "module",
   "description": "Runnable slice of the AI Cost Monitoring blueprint: ingest, rollups, anomalies, budget hints, and reports (local demo).",
+  "exports": {
+    ".": {
+      "types": "./src/index.ts",
+      "import": "./src/index.ts",
+      "default": "./src/index.ts"
+    },
+    "./cost-aggregator": {
+      "types": "./src/cost-aggregator.ts",
+      "import": "./src/cost-aggregator.ts",
+      "default": "./src/cost-aggregator.ts"
+    },
+    "./anomaly-detector": {
+      "types": "./src/anomaly-detector.ts",
+      "import": "./src/anomaly-detector.ts",
+      "default": "./src/anomaly-detector.ts"
+    },
+    "./ingest-usage-event": {
+      "types": "./src/ingest-usage-event.ts",
+      "import": "./src/ingest-usage-event.ts",
+      "default": "./src/ingest-usage-event.ts"
+    },
+    "./mock-data": {
+      "types": "./src/mock-data.ts",
+      "import": "./src/mock-data.ts",
+      "default": "./src/mock-data.ts"
+    },
+    "./types": {
+      "types": "./src/types.ts",
+      "import": "./src/types.ts",
+      "default": "./src/types.ts"
+    }
+  },
   "scripts": {
     "typecheck": "tsc -p tsconfig.json",
     "test": "vitest run",

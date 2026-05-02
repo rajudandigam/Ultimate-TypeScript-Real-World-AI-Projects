@@ -1,0 +1,20 @@
+{
+  "name": "@repo/benchmarks",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "description": "Reusable local benchmark harness for flagship reference implementations (not comparative product benchmarks).",
+  "scripts": {
+    "typecheck": "tsc -p tsconfig.json",
+    "test": "node -e \"process.exit(0)\"",
+    "suite:cost-monitoring": "tsx suites/cost-monitoring/run.ts"
+  },
+  "dependencies": {
+    "@ref/ai-cost-monitoring-engine": "workspace:*"
+  },
+  "devDependencies": {
+    "@types/node": "^22.10.7",
+    "tsx": "^4.19.2",
+    "typescript": "~5.7.3"
+  }
+}

@@ -122,7 +122,7 @@ packages/
   governance/             # @repo/governance — governance primitives
   evals/                  # @repo/evals — evaluation schemas / harness stubs
 reference-implementations/  # Runnable flagships (e.g. ai-cost-monitoring-engine); see docs plan
-benchmarks/               # Comparative runs and harnesses (planned)
+benchmarks/               # @repo/benchmarks harness + suites (see benchmarks/README.md)
 docs/
   PRODUCTION_REFERENCE_ARCHITECTURE_PLAN.md  # How the monorepo evolves with the catalog
   production-patterns/    # Cross-cutting production notes (scaffold)
