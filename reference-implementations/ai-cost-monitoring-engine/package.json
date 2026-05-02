@@ -1,0 +1,22 @@
+{
+  "name": "@ref/ai-cost-monitoring-engine",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "description": "Runnable slice of the AI Cost Monitoring blueprint: ingest, rollups, anomalies, budget hints, and reports (local demo).",
+  "scripts": {
+    "typecheck": "tsc -p tsconfig.json",
+    "test": "vitest run",
+    "start": "tsx src/index.ts",
+    "benchmark": "tsx benchmarks/cost-benchmark.ts"
+  },
+  "dependencies": {
+    "@repo/governance": "workspace:*"
+  },
+  "devDependencies": {
+    "@types/node": "^22.10.7",
+    "tsx": "^4.19.2",
+    "typescript": "~5.7.3",
+    "vitest": "^3.0.5"
+  }
+}

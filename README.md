@@ -121,7 +121,7 @@ packages/
   core/                   # @repo/core — runtime primitives (see package README)
   governance/             # @repo/governance — governance primitives
   evals/                  # @repo/evals — evaluation schemas / harness stubs
-reference-implementations/  # Flagship implementations (planned; see docs plan)
+reference-implementations/  # Runnable flagships (e.g. ai-cost-monitoring-engine); see docs plan
 benchmarks/               # Comparative runs and harnesses (planned)
 docs/
   PRODUCTION_REFERENCE_ARCHITECTURE_PLAN.md  # How the monorepo evolves with the catalog
