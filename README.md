@@ -112,8 +112,22 @@ Concrete paths for all of these are in the [**Project catalog**](#project-catalo
 ```text
 README.md                 # Narrative + full project catalog (this file)
 CONTRIBUTING.md           # How to propose or extend catalog entries
+package.json              # pnpm workspace root (typecheck / test / lint placeholder)
+pnpm-workspace.yaml       # Workspace packages under packages/*
+tsconfig.base.json        # Shared strict TypeScript defaults
 scripts/enrich_project_docs.py   # Adds stack + architecture layers (idempotent)
 scripts/apply_agentic_ui_projects.py + scripts/agentic_ui_projects.json  # Regenerate AG-UI batch (dev)
+packages/
+  core/                   # @repo/core — runtime primitives (see package README)
+  governance/             # @repo/governance — governance primitives
+  evals/                  # @repo/evals — evaluation schemas / harness stubs
+reference-implementations/  # Flagship implementations (planned; see docs plan)
+benchmarks/               # Comparative runs and harnesses (planned)
+docs/
+  PRODUCTION_REFERENCE_ARCHITECTURE_PLAN.md  # How the monorepo evolves with the catalog
+  production-patterns/    # Cross-cutting production notes (scaffold)
+  governance/             # Governance patterns (scaffold)
+  benchmarking/           # Benchmark methodology (scaffold)
 projects/
   <domain>/               # e.g. devtools, travel, enterprise-ai
     <project-slug>/
