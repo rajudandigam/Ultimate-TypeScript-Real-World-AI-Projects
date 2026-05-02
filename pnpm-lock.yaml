@@ -39,6 +39,9 @@ importers:
 
   packages/governance:
     devDependencies:
+      '@types/node':
+        specifier: ^22.10.7
+        version: 22.19.17
       typescript:
         specifier: ~5.7.3
         version: 5.7.3
