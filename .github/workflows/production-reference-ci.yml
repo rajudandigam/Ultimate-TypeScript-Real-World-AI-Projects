@@ -1,0 +1,48 @@
+# CI for the production reference layer: workspace packages, reference implementations,
+# and benchmark harness. Mock data only — no secrets, no external LLM calls.
+name: Production reference CI
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+    branches: [main]
+
+concurrency:
+  group: production-reference-ci-${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  production-reference:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Install pnpm
+        uses: pnpm/action-setup@v4
+        with:
+          version: 9
+
+      - name: Use Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: "20"
+          cache: pnpm
+
+      - name: Install dependencies
+        run: pnpm install --frozen-lockfile
+
+      - name: Typecheck (workspace)
+        run: pnpm run typecheck
+
+      - name: Test (workspace)
+        run: pnpm test
+
+      - name: Benchmark smoke (mock data only)
+        env:
+          BENCHMARK_ITERATIONS: 5
+          COST_MONITORING_EVENT_SCALE: 20
+        run: pnpm --filter @repo/benchmarks run suite:cost-monitoring

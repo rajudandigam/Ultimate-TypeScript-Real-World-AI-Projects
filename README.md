@@ -37,6 +37,38 @@ Alongside the catalog, an additive **production reference architecture layer** h
 
 **Reusable** TypeScript modules (`@repo/core`, `@repo/governance`, `@repo/evals`) shared by reference apps and future flagships — narrow APIs, strict typing, tests where code exists. Prefer extending these over copy-pasting patterns into every new implementation.
 
+### CI and local checks (production layer)
+
+**GitHub Actions:** [`.github/workflows/production-reference-ci.yml`](.github/workflows/production-reference-ci.yml) runs on **push** and **pull_request** to `main`: install **pnpm**, install dependencies, **`pnpm run typecheck`**, **`pnpm test`**, and a **benchmark smoke** (`@repo/benchmarks` cost-monitoring suite with **mock-only** data — no API keys, no external LLM calls).
+
+**Run tests locally** (repository root):
+
+```bash
+pnpm install
+pnpm run typecheck
+pnpm test
+```
+
+**Run benchmarks locally**
+
+- **Shared harness** ([`benchmarks/`](benchmarks/README.md)) — cost monitoring suite (writes timestamped artifacts under `benchmarks/results/` unless gitignored):
+
+```bash
+cd benchmarks
+pnpm suite:cost-monitoring
+# optional: faster smoke
+BENCHMARK_ITERATIONS=5 COST_MONITORING_EVENT_SCALE=20 pnpm suite:cost-monitoring
+```
+
+- **Reference-local micro-benchmark** (optional, in-package):
+
+```bash
+cd reference-implementations/ai-cost-monitoring-engine
+pnpm benchmark
+```
+
+Interpret timings using [`benchmarks/methodology.md`](benchmarks/methodology.md) (local reference only).
+
 ---
 
 ## Why this repo exists
