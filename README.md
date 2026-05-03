@@ -11,6 +11,34 @@ If you are trying to level up:
 - **Prompts → systems**
 - **Demos → production**
 
+## Production Reference Architecture Layer
+
+This repository remains **catalog-first**. The [**Project catalog**](#project-catalog) (**263** blueprint rows) is the **main learning resource**: every entry points at `projects/<domain>/<slug>/` with **`README.md`** (problem, stack, evaluation, failure modes) and **`architecture.md`** (diagrams and engineering depth). Nothing here replaces that contract with a second registry.
+
+Alongside the catalog, an additive **production reference architecture layer** helps you go from “what to build” to “how it can look in TypeScript” without pretending every blueprint is shipping code:
+
+- **Selected runnable references** — a small, growing set of **clone-and-run** slices under [`reference-implementations/`](reference-implementations/README.md) that mirror specific catalog paths. They demonstrate ingestion, rollups, governance hooks, and similar patterns you can adapt; they are **not** a completeness matrix for all 263 ideas.
+- **Shared packages** — reusable libraries under [`packages/`](packages/) ([`@repo/core`](packages/core/README.md), [`@repo/governance`](packages/governance/README.md), [`@repo/evals`](packages/evals/README.md)) for runtime and governance **primitives**. These are building blocks and documentation-backed patterns — **not** compliance certifications (see each package README).
+- **Benchmarks** — a transparent harness in [`benchmarks/`](benchmarks/README.md) with explicit methodology ([`benchmarks/methodology.md`](benchmarks/methodology.md)): local timings, environment metadata, and no implied SLAs or competitive “wins” without controlled reproduction.
+
+**Roadmap and boundaries:** [`docs/PRODUCTION_REFERENCE_ARCHITECTURE_PLAN.md`](docs/PRODUCTION_REFERENCE_ARCHITECTURE_PLAN.md).
+
+**First flagship (runnable):** [`reference-implementations/ai-cost-monitoring-engine`](reference-implementations/ai-cost-monitoring-engine/README.md) — companion to the blueprint [`projects/devtools/ai-cost-monitoring-engine`](projects/devtools/ai-cost-monitoring-engine/README.md).
+
+### Blueprint Catalog
+
+**263** project ideas, each with **`README.md`** + **`architecture.md`** under [`projects/`](projects/). The catalog tables below are the authoritative registry.
+
+### Reference Implementations
+
+**Selected** runnable systems that exercise shared packages and show production-shaped wiring (observability seams, governance integration, honest limitations). They link back to catalog paths for context; they do **not** renumber or replace catalog rows.
+
+### Shared Packages
+
+**Reusable** TypeScript modules (`@repo/core`, `@repo/governance`, `@repo/evals`) shared by reference apps and future flagships — narrow APIs, strict typing, tests where code exists. Prefer extending these over copy-pasting patterns into every new implementation.
+
+---
+
 ## Why this repo exists
 
 After building and reviewing real AI products, one wall kept showing up: **“We have prompts… now what?”** Teams stall at **prompt + API call** while the product still needs:
