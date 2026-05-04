@@ -6,7 +6,7 @@ Reusable **reference governance layer** for TypeScript AI systems: cost estimati
 
 ```mermaid
 flowchart TD
-    A[AI System] --> B[@repo/governance]
+    A[AI System] --> B["@repo/governance"]
 
     B --> C[Cost Tracking]
     B --> D[Audit Logging]

@@ -26,11 +26,11 @@ flowchart TD
     F --> H
     G --> I[JSON / Markdown Reports]
 
-    J[@repo/governance] --> D
+    J["@repo/governance"] --> D
     J --> E
     J --> F
 
-    K[@repo/core] --> B
+    K["@repo/core"] --> B
     K --> C
     K --> D
 

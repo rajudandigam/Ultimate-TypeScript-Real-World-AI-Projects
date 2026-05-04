@@ -46,9 +46,9 @@ flowchart TD
     A[Project Blueprint] --> B[Reference Implementation Candidate]
     B --> C[Shared Runtime Packages]
 
-    C --> C1[@repo/core]
-    C --> C2[@repo/governance]
-    C --> C3[@repo/evals]
+    C --> C1["@repo/core"]
+    C --> C2["@repo/governance"]
+    C --> C3["@repo/evals"]
 
     C1 --> D[Runnable Implementation]
     C2 --> D

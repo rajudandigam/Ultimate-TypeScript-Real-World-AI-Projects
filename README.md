@@ -41,9 +41,9 @@ flowchart TD
     E --> E3[Future: Enterprise RAG Platform]
 
     E --> F[Shared Packages]
-    F --> F1[@repo/core]
-    F --> F2[@repo/governance]
-    F --> F3[@repo/evals]
+    F --> F1["@repo/core"]
+    F --> F2["@repo/governance"]
+    F --> F3["@repo/evals"]
 
     E --> G[Benchmarks]
     G --> G1[Methodology]

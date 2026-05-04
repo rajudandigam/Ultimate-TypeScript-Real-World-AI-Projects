@@ -8,7 +8,7 @@ Reusable **runtime primitives** for workflows, agents, multi-agent orchestration
 
 ```mermaid
 flowchart TD
-    A[Reference Implementation] --> B[@repo/core]
+    A[Reference Implementation] --> B["@repo/core"]
 
     B --> C[Typed Messages]
     B --> D[Workflow Steps]
