@@ -9,6 +9,7 @@ Thank you for helping improve this catalog. The goal is **high-signal, productio
 1. Read this document and the [**Complexity levels**](README.md#complexity-levels) / [**System types**](README.md#system-types-short) sections in [`README.md`](README.md) so tags stay consistent with the rest of the catalog.
 2. Search the [**Project catalog**](README.md#project-catalog) in [`README.md`](README.md) for similar names and problems. **Avoid duplicates** and near-duplicates (renamed chatbots). [`PROJECT_INDEX.md`](PROJECT_INDEX.md) is only a pointer to that section.
 3. Prefer contributions that teach **workflow vs agent vs multi-agent** tradeoffs, **guardrails**, **evaluation**, or **observability**.
+4. If you change **`packages/`**, **`reference-implementations/`**, **`benchmarks/`**, or production-layer CI, also read **[`docs/CONTRIBUTING_REFERENCE_IMPLEMENTATIONS.md`](docs/CONTRIBUTING_REFERENCE_IMPLEMENTATIONS.md)** (runnable references, tests, governance, benchmarks, compliance language).
 
 ---
 
