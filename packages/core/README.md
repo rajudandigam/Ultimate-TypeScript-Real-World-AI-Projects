@@ -2,6 +2,8 @@
 
 Reusable **runtime primitives** for workflows, agents, multi-agent orchestration, tools, retries, durable run state, and typed messages.
 
+**Versioning:** **`0.x`** — breaking changes may occur while reference implementations and the catalog evolve together. Pin a lockfile commit or version range in consuming apps.
+
 **Status:** first practical slice — types, tools (Zod-shaped), sequential workflows, agent message shapes, in-memory run state, retry/backoff, circuit breaker, JSON logging, and OTel-shaped tracing hooks.
 
 ## Scripts

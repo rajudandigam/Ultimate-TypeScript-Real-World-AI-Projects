@@ -1,17 +1,21 @@
 import type { CostEstimate } from "@repo/governance";
+import { z } from "zod";
+
+/** Zod schema for inbound usage rows (HTTP/webhook boundaries later; CLI/mock today). */
+export const UsageEventSchema = z.object({
+  runId: z.string().min(1),
+  projectId: z.string().min(1),
+  model: z.string().min(1),
+  inputTokens: z.number().int().nonnegative(),
+  outputTokens: z.number().int().nonnegative(),
+  latencyMs: z.number().finite().nonnegative(),
+  /** Epoch milliseconds (UTC). */
+  timestamp: z.number().finite(),
+  metadata: z.record(z.string(), z.unknown()).optional(),
+});
 
 /** Raw usage line as emitted by an app or LLM gateway (synthetic in this demo). */
-export interface UsageEvent {
-  runId: string;
-  projectId: string;
-  model: string;
-  inputTokens: number;
-  outputTokens: number;
-  latencyMs: number;
-  /** Epoch milliseconds (UTC). */
-  timestamp: number;
-  metadata?: Record<string, unknown>;
-}
+export type UsageEvent = z.infer<typeof UsageEventSchema>;
 
 /** Stored event with deterministic id and governance-derived cost estimate. */
 export interface EnrichedUsageEvent extends UsageEvent {

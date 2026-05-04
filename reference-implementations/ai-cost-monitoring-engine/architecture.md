@@ -98,7 +98,7 @@ See [`PRODUCTION_GUIDE.md`](./PRODUCTION_GUIDE.md) for OpenTelemetry wiring guid
 | Failure | Demo behavior | Production mitigation |
 |---------|---------------|------------------------|
 | Missing / unknown model in pricing | `calculateCost` throws | Maintain a `fallback` entry + alerts for unknown models; quarantine events. |
-| Poison / negative token counts | `validateUsageEvent` throws | Schema validation at edge; dead-letter queue for async workers. |
+| Poison / negative token counts | `UsageEventSchema` / `ingest` rejects | Zod (or equivalent) at HTTP edge; dead-letter queue for async workers. |
 | Duplicate delivery | Not handled (in-memory append) | Idempotency keys per `(provider, requestId)` before insert. |
 | Clock skew | Day buckets use event `timestamp` as given | Normalize to UTC at producers; monitor skew between gateway and worker. |
 | Over-broad anomaly heuristics | Possible false positives | Tune thresholds per environment; track precision/recall of alerts over time. |

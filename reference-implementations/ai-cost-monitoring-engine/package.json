@@ -43,7 +43,9 @@
     "benchmark": "tsx benchmarks/cost-benchmark.ts"
   },
   "dependencies": {
-    "@repo/governance": "workspace:*"
+    "@repo/core": "workspace:*",
+    "@repo/governance": "workspace:*",
+    "zod": "^3.24.1"
   },
   "devDependencies": {
     "@types/node": "^22.10.7",

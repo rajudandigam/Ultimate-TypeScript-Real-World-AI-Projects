@@ -106,8 +106,8 @@ Each phase lists **objective**, **deliverables**, and **acceptance criteria**. P
 **Deliverables**
 
 - Create top-level folders: `packages/`, `reference-implementations/`, `benchmarks/`, and `docs/production-patterns/`, `docs/governance/`, `docs/benchmarking/` (as empty or README-only stubs where appropriate).
-- Root-level **workspace** definition (e.g. `pnpm-workspace.yaml` or equivalent) scoped to `packages/` and `reference-implementations/` so installs and builds are reproducible.
-- Minimal **CI** that runs `typecheck`, `lint`, and `test` only on the new code paths (does not attempt to “validate” catalog markdown).
+- Root-level **workspace** definition (`pnpm-workspace.yaml`) including **`packages/*`**, **`reference-implementations/*`**, and **`benchmarks/`** so installs and builds are reproducible.
+- Minimal **CI** on `main` / pull requests: **`pnpm install`**, **`pnpm run typecheck`**, **`pnpm test`**, and a **benchmark smoke** (mock data only). Root **`pnpm lint`** remains a placeholder until ESLint is added — CI does not fail on lint today.
 
 **Acceptance criteria**
 
@@ -122,7 +122,7 @@ Each phase lists **objective**, **deliverables**, and **acceptance criteria**. P
 **Deliverables**
 
 - `packages/core` with TypeScript build, tests, and README describing **non-goals** (not a full agent framework).
-- Versioning policy (0.x) documented.
+- **Versioning policy (0.x)** documented in [`packages/core/README.md`](../packages/core/README.md) (workspace packages ship as `0.x` until API stability is declared).
 
 **Acceptance criteria**
 

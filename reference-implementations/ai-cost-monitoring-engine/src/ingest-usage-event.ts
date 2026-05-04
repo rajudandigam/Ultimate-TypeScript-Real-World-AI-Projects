@@ -3,7 +3,11 @@ import {
   InMemoryAuditLogger,
   type PricingConfig,
 } from "@repo/governance";
-import type { EnrichedUsageEvent, UsageEvent } from "./types.js";
+import {
+  UsageEventSchema,
+  type EnrichedUsageEvent,
+  type UsageEvent,
+} from "./types.js";
 
 export class UsageEventStore {
   private readonly items: EnrichedUsageEvent[] = [];
@@ -16,46 +20,44 @@ export class UsageEventStore {
     return this.items;
   }
 
-  ingest(pricing: PricingConfig, raw: UsageEvent): EnrichedUsageEvent {
-    validateUsageEvent(raw);
+  /** Validates `raw` with Zod before enrich + persist. */
+  ingest(pricing: PricingConfig, raw: unknown): EnrichedUsageEvent {
+    const parsed = UsageEventSchema.safeParse(raw);
+    if (!parsed.success) {
+      const detail = parsed.error.issues
+        .map((i) => `${i.path.join(".") || "(root)"}: ${i.message}`)
+        .join("; ");
+      throw new Error(`Invalid usage event: ${detail}`);
+    }
+    const event: UsageEvent = parsed.data;
+
     const costEstimate = calculateCost(
       {
-        model: raw.model,
-        promptTokens: raw.inputTokens,
-        completionTokens: raw.outputTokens,
+        model: event.model,
+        promptTokens: event.inputTokens,
+        completionTokens: event.outputTokens,
       },
       pricing,
     );
     this.seq += 1;
     const enriched: EnrichedUsageEvent = {
-      ...raw,
+      ...event,
       eventId: `evt_${String(this.seq).padStart(5, "0")}`,
       costEstimate,
     };
     this.items.push(enriched);
     this.audit.log({
-      runId: raw.runId,
+      runId: event.runId,
       actor: "ingest",
       action: "usage.ingested",
-      resource: `project:${raw.projectId}`,
+      resource: `project:${event.projectId}`,
       metadata: {
         eventId: enriched.eventId,
-        model: raw.model,
+        model: event.model,
         cost: costEstimate.total,
-        latencyMs: raw.latencyMs,
+        latencyMs: event.latencyMs,
       },
     });
     return enriched;
   }
-}
-
-export function validateUsageEvent(e: UsageEvent): void {
-  if (!e.runId) throw new Error("runId is required");
-  if (!e.projectId) throw new Error("projectId is required");
-  if (!e.model) throw new Error("model is required");
-  if (e.inputTokens < 0 || e.outputTokens < 0)
-    throw new Error("token counts must be non-negative");
-  if (!Number.isFinite(e.latencyMs) || e.latencyMs < 0)
-    throw new Error("latencyMs must be a non-negative finite number");
-  if (!Number.isFinite(e.timestamp)) throw new Error("timestamp must be finite");
 }

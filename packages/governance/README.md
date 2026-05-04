@@ -4,7 +4,7 @@ Reusable **reference governance layer** for TypeScript AI systems: cost estimati
 
 ## Important disclaimer
 
-This package provides **patterns and building blocks for engineering**, not certifications. It does **not** make applications **HIPAA**, **SOX**, **GDPR**, or otherwise **compliant**. Heuristic PII detection is **not** a Data Loss Prevention (DLP) product. **Legal, security, and compliance sign-off** are required before production use in regulated environments.
+This package provides **patterns and building blocks for engineering**, not certifications. It does **not** satisfy **HIPAA**, **SOX**, **GDPR**, or other **compliance obligations** for your applications — it offers **reference controls** you may adapt with legal and security review. Heuristic PII detection is **not** a Data Loss Prevention (DLP) product. **Legal, security, and compliance sign-off** are required before production use in regulated environments.
 
 ## Scripts
 

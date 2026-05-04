@@ -1,8 +1,8 @@
-# 250+ Ultimate TypeScript Real-World AI Projects
+# 263 Ultimate TypeScript Real-World AI Projects
 
 ![Engineers collaborating on TypeScript AI workflows, agents, and multi-agent systems.](assets/readme-banner.png)
 
-**250+ production-ready workflows, agents, and multi-agent systems — TypeScript-first.**
+**263 blueprint-grade workflows, agents, and multi-agent systems — TypeScript-first.** The [**Project catalog**](#project-catalog) is documentation you can build from; only **selected** paths also have runnable reference code under [`reference-implementations/`](reference-implementations/README.md).
 
 Most AI repos stop at **call an API and hope it works.** Plenty of content teaches SDK calls; far less shows how to ship **systems that hold up in production**. This repo goes further: **real system design** — not chatbot demos.
 

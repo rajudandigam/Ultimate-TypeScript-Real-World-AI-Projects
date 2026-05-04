@@ -1,5 +1,6 @@
 import path from "node:path";
 import { fileURLToPath } from "node:url";
+import { createCorrelationId, createStructuredLogger } from "@repo/core";
 import { aggregateCosts } from "./cost-aggregator.js";
 import { detectAnomalies } from "./anomaly-detector.js";
 import { evaluateBudgets, type BudgetPolicy } from "./budget-policy.js";
@@ -54,11 +55,22 @@ export function runDemoReport(): {
 }
 
 async function main(): Promise<void> {
+  const correlationId = createCorrelationId();
+  const log = createStructuredLogger({
+    correlationId,
+    runId: "cli-demo",
+    sink: (line) => process.stderr.write(`${line}\n`),
+  });
+  log.info("ai_cost_monitoring.demo.started", {});
+
   const { markdown, json, auditEventCount } = runDemoReport();
   process.stdout.write(markdown);
   process.stdout.write("\n\n--- json ---\n");
   process.stdout.write(json);
   process.stdout.write("\n");
+  log.info("ai_cost_monitoring.demo.completed", {
+    auditEventCount,
+  });
   process.stderr.write(
     `[ai-cost-monitoring-engine] audit events recorded: ${auditEventCount}\n`,
   );

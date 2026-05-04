@@ -67,9 +67,15 @@ importers:
 
   reference-implementations/ai-cost-monitoring-engine:
     dependencies:
+      '@repo/core':
+        specifier: workspace:*
+        version: link:../../packages/core
       '@repo/governance':
         specifier: workspace:*
         version: link:../../packages/governance
+      zod:
+        specifier: ^3.24.1
+        version: 3.25.76
     devDependencies:
       '@types/node':
         specifier: ^22.10.7
