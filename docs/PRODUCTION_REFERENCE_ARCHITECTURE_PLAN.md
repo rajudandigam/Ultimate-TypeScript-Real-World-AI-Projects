@@ -37,6 +37,32 @@ This document describes a **focused, incremental path** to grow the repository f
 
 ## Target State
 
+### Production Reference Architecture Flow
+
+The catalog remains the **discovery layer**. The production reference layer turns **selected** high-value blueprints into runnable examples, shared packages, tests, and benchmarks — without collapsing the 263-row registry into a build matrix.
+
+```mermaid
+flowchart TD
+    A[Project Blueprint] --> B[Reference Implementation Candidate]
+    B --> C[Shared Runtime Packages]
+
+    C --> C1[@repo/core]
+    C --> C2[@repo/governance]
+    C --> C3[@repo/evals]
+
+    C1 --> D[Runnable Implementation]
+    C2 --> D
+    C3 --> D
+
+    D --> E[Tests]
+    D --> F[Benchmarks]
+    D --> G[Production Guide]
+
+    E --> H[CI]
+    F --> H
+    G --> I[Adoption / Learning Docs]
+```
+
 ### What stays
 
 - **The catalog remains the primary learning layer**—263 entries stay as blueprints; paths, tables, and per-project docs are not repurposed as “implemented product inventory.”

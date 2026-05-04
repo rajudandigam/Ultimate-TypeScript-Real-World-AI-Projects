@@ -1,4 +1,4 @@
-# 250+ Ultimate TypeScript Real-World AI Projects
+# 263 Ultimate TypeScript Real-World AI Projects
 
 ![Engineers collaborating on TypeScript AI workflows, agents, and multi-agent systems.](assets/readme-banner.png)
 
@@ -10,6 +10,50 @@ If you are trying to level up:
 
 - **Prompts → systems**
 - **Demos → production**
+
+---
+
+## How This Repository Is Organized
+
+This repository has two layers:
+
+- **Blueprint catalog** — **263** AI system blueprints under [`projects/`](projects/), each with `README.md` and `architecture.md`.
+- **Production reference layer** — reusable TypeScript packages under [`packages/`](packages/), runnable code under [`reference-implementations/`](reference-implementations/README.md), the [`benchmarks/`](benchmarks/) harness, and CI quality gates ([`.github/workflows/production-reference-ci.yml`](.github/workflows/production-reference-ci.yml)).
+
+Most projects are **blueprints only** (documentation you implement in your own codebase). **Selected** catalog ideas become **runnable reference implementations** that share `@repo/*` packages and tests — not a promise that all 263 rows ship as code in this repo.
+
+```mermaid
+flowchart TD
+    A[README Project Catalog] --> B[Blueprint Projects]
+    A --> C[Learning Docs]
+    A --> D[Top Projects]
+
+    B --> B1[projects/domain/project/README.md]
+    B --> B2[projects/domain/project/architecture.md]
+
+    C --> C1[Learning Path]
+    C --> C2[Production Patterns]
+    C --> C3[Contribution Guides]
+
+    D --> E[Reference Implementations]
+    E --> E1[AI Cost Monitoring Engine]
+    E --> E2[Future: Multi-Agent Incident Response]
+    E --> E3[Future: Enterprise RAG Platform]
+
+    E --> F[Shared Packages]
+    F --> F1[@repo/core]
+    F --> F2[@repo/governance]
+    F --> F3[@repo/evals]
+
+    E --> G[Benchmarks]
+    G --> G1[Methodology]
+    G --> G2[Benchmark Suites]
+    G --> G3[Local Results]
+
+    E --> H[CI / Quality Gates]
+```
+
+---
 
 ## Production Reference Architecture Layer
 
@@ -145,13 +189,35 @@ Concrete paths for all of these are in the [**Project catalog**](#project-catalo
 
 ---
 
-## System types (short)
+## System Types at a Glance
+
+```mermaid
+flowchart LR
+    W[Workflow] --> W1[Deterministic Steps]
+    W --> W2[Predictable Cost]
+    W --> W3[High Reliability]
+
+    A[Agent] --> A1[Reasoning]
+    A --> A2[Tool Usage]
+    A --> A3[Dynamic Decisions]
+
+    M[Multi-Agent] --> M1[Specialized Roles]
+    M --> M2[Coordination]
+    M --> M3[Complex Workflows]
+
+    U[Agentic UI] --> U1[User + AI Collaboration]
+    U --> U2[Interactive State]
+    U --> U3[Real-Time Suggestions]
+```
+
+**Workflows** fit repeatable processes with clear steps. **Agents** fit when decisions depend on context, tools, and guardrails. **Multi-agent** fits when several specialized roles must coordinate. **Agentic UI** fits when the user and AI collaborate inside the product experience (see blueprint batch under [`projects/agentic-ui/`](projects/agentic-ui/)).
 
 | Type | Role |
 |------|------|
 | **Workflow** | Deterministic or durable pipelines — predictable, often cheaper, easier to test. |
 | **Agent** | Reasoning, tools, and decisions under constraints — flexible, needs guardrails. |
 | **Multi-agent** | Several roles collaborating — powerful, highest integration and ops cost. |
+| **Agentic UI (AG-UI)** | Copilots and consoles where UI state, suggestions, and human intent co-evolve with model output. |
 
 ---
 

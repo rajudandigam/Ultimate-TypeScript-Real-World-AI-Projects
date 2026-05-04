@@ -2,6 +2,29 @@
 
 Reusable **runtime primitives** for workflows, agents, multi-agent orchestration, tools, retries, durable run state, and typed messages.
 
+## Core Package Role
+
+`@repo/core` gives reference implementations **small, typed building blocks** (messages, workflow steps, tool contracts, run state, resilience, logging) so agent-shaped code does not reimplement the same glue in every flagship.
+
+```mermaid
+flowchart TD
+    A[Reference Implementation] --> B[@repo/core]
+
+    B --> C[Typed Messages]
+    B --> D[Workflow Steps]
+    B --> E[Tool Interfaces]
+    B --> F[Run State]
+    B --> G[Retry / Circuit Breaker]
+    B --> H[Structured Logging]
+
+    C --> I[Agents]
+    D --> I
+    E --> I
+    F --> I
+```
+
+`@repo/core` provides reusable runtime primitives for workflows, agents, and multi-agent systems. It should stay **small**, **typed**, and **implementation-agnostic** (no vendor SDKs here — adapters live in apps).
+
 **Versioning:** **`0.x`** — breaking changes may occur while reference implementations and the catalog evolve together. Pin a lockfile commit or version range in consuming apps.
 
 **Status:** first practical slice — types, tools (Zod-shaped), sequential workflows, agent message shapes, in-memory run state, retry/backoff, circuit breaker, JSON logging, and OTel-shaped tracing hooks.

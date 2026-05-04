@@ -6,37 +6,49 @@ The canonical product narrative remains in
 
 ---
 
-## 1. Text data flow
+## Overview
+
+This flagship shows how **usage events** move through governance-aware **cost aggregation**, **anomaly detection**, **budget policy** decisions, and **reporting**, with **`@repo/core`** and **`@repo/governance`** composed at the seams a production service would care about.
+
+### Architecture Diagram
 
 ```mermaid
-flowchart LR
-  subgraph inputs [Inputs]
-    M[mock-data.ts]
-  end
-  subgraph ingest [Ingestion]
-    I[ingest-usage-event.ts]
-    A[InMemoryAuditLogger]
-  end
-  subgraph compute [Compute]
-    C[cost-aggregator.ts]
-    X[anomaly-detector.ts]
-    B[budget-policy.ts]
-  end
-  subgraph outputs [Outputs]
-    R[report-generator.ts]
-  end
-  M --> I
-  I --> A
-  I --> C
-  C --> X
-  C --> B
-  X --> B
-  C --> R
-  X --> R
-  B --> R
+flowchart TD
+    A[Usage Events] --> B[Ingestion Layer]
+    B --> C[Usage Event Validator]
+    C --> D[Cost Aggregator]
+
+    D --> E[Anomaly Detector]
+    D --> F[Budget Policy Engine]
+    D --> G[Report Generator]
+
+    E --> H[Alerts and Recommendations]
+    F --> H
+    G --> I[JSON / Markdown Reports]
+
+    J[@repo/governance] --> D
+    J --> E
+    J --> F
+
+    K[@repo/core] --> B
+    K --> C
+    K --> D
+
+    L[Benchmark Harness] --> B
+    L --> D
+    L --> E
+
+    M[Logs / Traces] --> B
+    M --> D
+    M --> E
+    M --> F
 ```
 
-**Narrative:** synthetic usage rows are validated, enriched with a **governance-derived cost estimate**, appended to an in-memory store, and mirrored into an **audit log**. Rollups feed **anomaly rules** and **budget advisory** logic before reports are rendered.
+---
+
+## 1. Text data flow
+
+**Narrative:** synthetic usage rows enter the **ingestion layer** (`ingest-usage-event.ts`), are validated (**Zod** / `UsageEventSchema`), enriched with a **governance-derived cost estimate**, appended to an in-memory store, and mirrored into an **`InMemoryAuditLogger`**. Rollups feed **anomaly rules** and **budget advisory** logic before **Markdown** and **JSON** reports are rendered. The diagram above maps the same path at a package-integration level (including benchmark and observability seams).
 
 ---
 
